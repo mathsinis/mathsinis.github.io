@@ -3,18 +3,29 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Math's documentation!
+Inicio
 ================================
+
+Sobre Mim:
+===========
+Estudante de Estatística e Ciência de Dados (bacharelado), minhas areas de interesse são:
+- Redes Complexas
+- Graph Covolutional Networks
+
+Contato: m.siniscarchio@gmail.com
+
+Conteudo
+================================
+.. toctree::
+   :maxdepth: 2
+   :caption: Projetos
+
+   Jupyter/teste.ipynb
+   Jupyter/testando.rst
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Estudo
 
    Jupyter/teste.ipynb
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   Jupyter/testando.rst

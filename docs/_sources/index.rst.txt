@@ -8,24 +8,23 @@ Inicio
 
 Sobre Mim:
 ===========
-Estudante de Estatística e Ciência de Dados (bacharelado), minhas areas de interesse são:
-- Redes Complexas
-- Graph Covolutional Networks
+
+Estudante de Estatística e Ciência de Dados (bacharelado), minhas áreas de interesse são:
+
+* Aprendizado de máquina
+* Aprendizado profundo
+* Redes Complexas
 
 Contato: m.siniscarchio@gmail.com
 
-Conteudo
-================================
 .. toctree::
    :maxdepth: 2
    :caption: Projetos
-
+   
    Jupyter/teste.ipynb
-   Jupyter/testando.rst
 
 .. toctree::
    :maxdepth: 2
    :caption: Estudo
 
-   Jupyter/teste.ipynb
-   Jupyter/testando.rst
+   Jupyter/regressao_simples.ipynb

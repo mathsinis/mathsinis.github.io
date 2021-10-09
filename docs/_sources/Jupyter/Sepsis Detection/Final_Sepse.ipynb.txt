@@ -8,6 +8,28 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Objetivo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "A sepse é uma síndrome clínica decorrente de uma infecção associada a uma inflamação sistêmica, onde fatores patogênicos e características do hospedeiro (idade, comorbidades, genética, ambiente) determinam a gravidade e a evolução da doença.\n",
+    "\n",
+    "No Brasil, segundo o ILAS (Instituto Latino Americano da Sepse), de acordo com o seu último relatório nacional, a mortalidade por sepse é de 40%, incluindo hospitais públicos e privados. Além do impacto na mortalidade, devido à complexidade dos casos, metade dos pacientes precisam ser tratados em Unidades de Terapia Intensiva (UTI) totalizando 25% da ocupação dos leitos de UTI no Brasil, sendo a sepse uma das doenças que gera mais custos no setor público e privado da saúde no país.\n",
+    "\n",
+    "O grande problema com o diagnóstico preciso de sepse é que ele envolve a obtenção de amostras de sangue e urina do paciente, e até que sejam aferidas às quantidades relativas de lactato, leucócitos e proteína C reativa ou feita a cultura de urina, que são indicadores mais precisos de sepse, o paciente pode apresentar uma piora exponencial no seu quadro clínico.\n",
+    "\n",
+    "Trechos retirados da dissertação de mestrado de Aline Junskowski Kalil. [1]\n",
+    "\n",
+    "Kalil, A. J. (2017). Avaliação do impacto na identificação de pacientes com risco de sepse após implantação de um robô cognitivo gerenciador de riso (Robô Laura) (Master's thesis, Universidade Tecnológica Federal do Paraná)."
+   ]
+  },
+  {
    "cell_type": "code",
    "execution_count": 1,
    "metadata": {

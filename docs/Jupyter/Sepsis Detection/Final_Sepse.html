@@ -43,6 +43,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Car_Price/Car_Price.html">Car Price</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../NBA%20Matches/Final_Games.html">NBA Matches</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sepsis Detection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Objetivo">Objetivo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Conhecendo-os-dados">Conhecendo os dados</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Pre-processamento">Pre processamento</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Tratando-o-campo-temperatura">Tratando o campo temperatura</a></li>
@@ -363,6 +364,13 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Sepsis-Detection">
 <h1>Sepsis Detection<a class="headerlink" href="#Sepsis-Detection" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Objetivo">
+<h2>Objetivo<a class="headerlink" href="#Objetivo" title="Permalink to this headline">¶</a></h2>
+<p>A sepse é uma síndrome clínica decorrente de uma infecção associada a uma inflamação sistêmica, onde fatores patogênicos e características do hospedeiro (idade, comorbidades, genética, ambiente) determinam a gravidade e a evolução da doença.</p>
+<p>No Brasil, segundo o ILAS (Instituto Latino Americano da Sepse), de acordo com o seu último relatório nacional, a mortalidade por sepse é de 40%, incluindo hospitais públicos e privados. Além do impacto na mortalidade, devido à complexidade dos casos, metade dos pacientes precisam ser tratados em Unidades de Terapia Intensiva (UTI) totalizando 25% da ocupação dos leitos de UTI no Brasil, sendo a sepse uma das doenças que gera mais custos no setor público e privado da saúde no país.</p>
+<p>O grande problema com o diagnóstico preciso de sepse é que ele envolve a obtenção de amostras de sangue e urina do paciente, e até que sejam aferidas às quantidades relativas de lactato, leucócitos e proteína C reativa ou feita a cultura de urina, que são indicadores mais precisos de sepse, o paciente pode apresentar uma piora exponencial no seu quadro clínico.</p>
+<p>Trechos retirados da dissertação de mestrado de Aline Junskowski Kalil. [1]</p>
+<p>Kalil, A. J. (2017). Avaliação do impacto na identificação de pacientes com risco de sepse após implantação de um robô cognitivo gerenciador de riso (Robô Laura) (Master’s thesis, Universidade Tecnológica Federal do Paraná).</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -385,6 +393,7 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="n">df_test</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_data_without_label.csv&quot;</span><span class="p">)</span>
 <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;training_data.csv&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="Conhecendo-os-dados">
@@ -521,7 +530,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_7_0.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_7_0.png" />
+<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_9_0.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_9_0.png" />
 </div>
 </div>
 </div>
@@ -2926,35 +2935,35 @@ Frequencia treino:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_0.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_0.png" />
+<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_0.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_0.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_1.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_1.png" />
+<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_1.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_2.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_2.png" />
+<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_2.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_2.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_3.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_3.png" />
+<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_3.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_3.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_4.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_69_4.png" />
+<img alt="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_4.png" src="../../_images/Jupyter_Sepsis_Detection_Final_Sepse_71_4.png" />
 </div>
 </div>
 <p>Pelo fato de termos obervados valores positivos e negativos para a sepse em relação às variáveis pulso, pa_min e pa_max nos valores apresentados como outlier, mas olhando a base antes do preenchiemnto dos nan, decidimos por não aumentar mais os valores a serem considerados como nan. Todavia, fica um ponto de atenção a ser tratado logo na coleta dos dados, pois nesses casos, não da para saber se de fato ocorreu o valor apresentado ou se também foi algum tipo de erro.</p>

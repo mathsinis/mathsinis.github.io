@@ -42,6 +42,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Car_Price/Car_Price.html">Car Price</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">NBA Matches</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Objetivo">Objetivo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Entendendo-os-dados">Entendendo os dados</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Porcentagem-de-dados-jogos-vencidos-e-jogos-perdidos">Porcentagem de dados jogos vencidos e jogos perdidos</a></li>
 </ul>
@@ -378,6 +379,16 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="NBA-Matches">
 <h1>NBA Matches<a class="headerlink" href="#NBA-Matches" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Objetivo">
+<h2>Objetivo<a class="headerlink" href="#Objetivo" title="Permalink to this headline">¶</a></h2>
+<p>Considerando o crescente uso de ciência dos dados no mercardo esportivo e de especulação, nesta semana vocês farão parte de uma startup que quer quebrar os sites de apostas da NBA!</p>
+<p>O mercado online de apostas foi avaliado em US$85.047 no ano de 2019 e pode ter um crescimento ainda maior nos próximos anos levando em consideração a posição favorável de alguns governos com a legalização das plataformas e pagamento de impostos. [1]</p>
+<p>Com isso, a startup de vocês, RodaRodaBet, após um estudo inicial sobre o mercado de apostas americano e dos dados disponíveis online sobre a NBA [2], está buscando a construção de um modelo que possa indicar se os times da casa irão ganhar ou perder em cada rodada da liga.</p>
+<p>Neste desafio, vocês irão utilizar dados raspados da NBA &amp; ABA League Index, que contém informações sobre os times que jogam em cada rodada da NBA, para prever se determinado time da casa vai ganhar ou perder (Win or Lose).</p>
+<p>References:</p>
+<p>1 - <a class="reference external" href="https://www.globenewswire.com/news-release/2020/08/31/2086041/0/en/Global-Sports-Betting-Market-Worth-85-Billion-in-2019-Industry-Assessment-and-Forecasts-Throughout-2020-2025.html">https://www.globenewswire.com/news-release/2020/08/31/2086041/0/en/Global-Sports-Betting-Market-Worth-85-Billion-in-2019-Industry-Assessment-and-Forecasts-Throughout-2020-2025.html</a></p>
+<p>2 - <a class="reference external" href="https://towardsdatascience.com/predicting-the-2020-nba-playoffs-bracket-with-machine-learning-2030f80fa62c">https://towardsdatascience.com/predicting-the-2020-nba-playoffs-bracket-with-machine-learning-2030f80fa62c</a></p>
+<p>3 - <a class="reference external" href="https://www.basketball-reference.com/leagues/">https://www.basketball-reference.com/leagues/</a></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -399,6 +410,7 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="n">df_test</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_without_label.csv&quot;</span><span class="p">)</span>
 <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;train_full.csv&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="Entendendo-os-dados">
@@ -453,7 +465,7 @@ Name: WinOrLose, dtype: int64
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_8_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_8_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_10_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_10_0.png" />
 </div>
 </div>
 <p>Temos uma grande maioria de jogos perdidos, portanto eh necessario uma analise estratificada quando for treinar os modelos</p>
@@ -762,21 +774,21 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_18_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_18_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_20_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_20_0.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_18_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_18_1.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_20_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_20_1.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_18_2.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_18_2.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_20_2.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_20_2.png" />
 </div>
 </div>
 <p>Weekofyear e Dia do ano possuem um formato de distribuição próximo.</p>
@@ -798,7 +810,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_21_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_21_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_23_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_23_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -816,7 +828,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_22_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_22_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_24_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_24_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -834,7 +846,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_23_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_23_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_25_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_25_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -852,7 +864,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_24_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_24_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_26_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_26_0.png" />
 </div>
 </div>
 </div>
@@ -916,14 +928,14 @@ Name: Season, dtype: int64
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_29_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_29_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_31_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_31_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_29_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_29_1.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_31_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_31_1.png" />
 </div>
 </div>
 <p>Note que os jogos acontecem exclusivamente nas seasons 2, 3 e 4 e veja que no treino temos quase que exclusivamente os jogos acontecendo na season 2, indicando que essa variável talvez não seja muito interessantes para os modelos.</p>
@@ -1081,7 +1093,7 @@ RandomForestClassifier()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_43_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_43_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_45_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_45_0.png" />
 </div>
 </div>
 </div>
@@ -1328,7 +1340,7 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_51_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_51_1.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_53_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_53_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1644,7 +1656,7 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_64_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_64_1.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_66_1.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_66_1.png" />
 </div>
 </div>
 <p>Através das correlações, optamos por eliminar as variáveis ‘A_Loss’ e ‘A_Wins’</p>
@@ -1956,7 +1968,7 @@ Name: WinOrLose, dtype: int64
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_79_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_79_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_81_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_81_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -2092,7 +2104,7 @@ Name: WinOrLose, dtype: int64
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_86_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_86_0.png" />
+<img alt="../../_images/Jupyter_NBA_Matches_Final_Games_88_0.png" src="../../_images/Jupyter_NBA_Matches_Final_Games_88_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">

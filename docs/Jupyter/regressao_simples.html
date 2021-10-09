@@ -389,9 +389,9 @@ Y = β_0 + β1X + ε
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 </pre></div>
 </div>
 </div>
@@ -400,34 +400,34 @@ from sklearn.linear_model import LinearRegression
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def least_squares2(X,Y):
-    &#39;&#39;&#39;
-    X: Vetor com valores de x
-    Y: Vetor com valores de y
-    Retorna os coeficientes m e b da equação
-    &#39;&#39;&#39;
+<span></span><span class="k">def</span> <span class="nf">least_squares2</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    X: Vetor com valores de x</span>
+<span class="sd">    Y: Vetor com valores de y</span>
+<span class="sd">    Retorna os coeficientes m e b da equação</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
-    #Valores para facilitar
-    x_a = sum(X)/len(X)
-    y_a = sum(Y)/len(Y)
-    x2_a = sum(np.power(X,2))/len(X)
-    xy_a = np.dot(X,Y)/len(X)
+    <span class="c1">#Valores para facilitar</span>
+    <span class="n">x_a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">y_a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+    <span class="n">x2_a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">xy_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-    #coeficiente angular (m) e variavel idenpendente b : y = mx + b
-    m = (xy_a - x_a * y_a)/(x2_a - x_a**2)
+    <span class="c1">#coeficiente angular (m) e variavel idenpendente b : y = mx + b</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">xy_a</span> <span class="o">-</span> <span class="n">x_a</span> <span class="o">*</span> <span class="n">y_a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x2_a</span> <span class="o">-</span> <span class="n">x_a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-    b = (x2_a * y_a - x_a * xy_a)/(x2_a - x_a**2)
+    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2_a</span> <span class="o">*</span> <span class="n">y_a</span> <span class="o">-</span> <span class="n">x_a</span> <span class="o">*</span> <span class="n">xy_a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x2_a</span> <span class="o">-</span> <span class="n">x_a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
-    #vetor com predição de y nos pontos do vetor x
-    X = np.array(X)
-    y_pred = X*m + b
+    <span class="c1">#vetor com predição de y nos pontos do vetor x</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">m</span> <span class="o">+</span> <span class="n">b</span>
 
-    #plotando o grafico
-    plt.scatter(X, Y) #plotando pontos
-    plt.plot(X, y_pred, color=&#39;red&#39;)
-    plt.show()
+    <span class="c1">#plotando o grafico</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="c1">#plotando pontos</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-    return m,b
+    <span class="k">return</span> <span class="n">m</span><span class="p">,</span><span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -439,8 +439,8 @@ from sklearn.linear_model import LinearRegression
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>x = np.array([58,105,88,118,117,137,157,169,149,202])
-y = np.array([2,6,8,8,12,16,20,20,22,26])
+<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">58</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">117</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">202</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">26</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -449,9 +449,9 @@ y = np.array([2,6,8,8,12,16,20,20,22,26])
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>m,b = least_squares2(x,y)
-print(&#39;Coeficiente m:{}&#39;.format(m))
-print(&#39;Coeficient b:{}&#39;.format(b))
+<span></span><span class="n">m</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">least_squares2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficiente m:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficient b:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -478,9 +478,9 @@ Coeficient b:-9.47107438016529
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>reg = LinearRegression().fit(x.reshape(-1,1),y)
-print(&#39;Coeficiente m:{}&#39;.format(reg.coef_[0]))
-print(&#39;Coeficient b:{}&#39;.format(reg.intercept_))
+<span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficiente m:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficient b:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

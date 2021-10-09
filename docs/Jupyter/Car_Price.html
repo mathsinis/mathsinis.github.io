@@ -345,10 +345,10 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
 </div>
@@ -372,7 +372,7 @@ import seaborn as sns
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>!which -a python
+<span></span><span class="o">!</span>which -a python
 </pre></div>
 </div>
 </div>
@@ -390,8 +390,8 @@ operable program or batch file.
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_test= pd.read_csv(&quot;/content/drive/MyDrive/Graduação/Aprendizado de maquina/TRABALHOS DE APRENDIZADO DE MÁQUINA/Car - Trabalho 2/test_car_details.csv&quot;)
-df_train = pd.read_csv(&quot;/content/drive/MyDrive/Graduação/Aprendizado de maquina/TRABALHOS DE APRENDIZADO DE MÁQUINA/Car - Trabalho 2/train_car_details.csv&quot;)
+<span></span><span class="n">df_test</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Graduação/Aprendizado de maquina/TRABALHOS DE APRENDIZADO DE MÁQUINA/Car - Trabalho 2/test_car_details.csv&quot;</span><span class="p">)</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Graduação/Aprendizado de maquina/TRABALHOS DE APRENDIZADO DE MÁQUINA/Car - Trabalho 2/train_car_details.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -400,8 +400,8 @@ df_train = pd.read_csv(&quot;/content/drive/MyDrive/Graduação/Aprendizado de
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(df_train.columns)
-print(df_test.columns)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -431,8 +431,8 @@ Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;km_driven&#39;, &#39;f
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Verificando as variáveis
-df_train.head()
+<span></span><span class="c1">#Verificando as variáveis</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -569,10 +569,10 @@ df_train.head()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_train = df_train.iloc[:,1:] #retirando a coluna de id
+<span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#retirando a coluna de id</span>
 
-Id = df_test.Id
-df_test = df_test.iloc[:,1:] #retirando a coluna de id
+<span class="n">Id</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">Id</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#retirando a coluna de id</span>
 </pre></div>
 </div>
 </div>
@@ -583,8 +583,8 @@ df_test = df_test.iloc[:,1:] #retirando a coluna de id
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Verificado a quantidade de NaN por atributo
-df_train.isna().sum()
+<span></span><span class="c1">#Verificado a quantidade de NaN por atributo</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -614,8 +614,8 @@ dtype: int64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Porcentagem de nan por atributo
-print(100*df_train.isna().sum()/len(df_train))
+<span></span><span class="c1">#Porcentagem de nan por atributo</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">df_train</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -645,8 +645,8 @@ dtype: float64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Porcentagem de nan por atributo no test
-print(100*df_test.isna().sum()/len(df_test))
+<span></span><span class="c1">#Porcentagem de nan por atributo no test</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">df_test</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -676,11 +676,11 @@ dtype: float64
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(f&#39;Quantidade de linhas totais: &#39;, df_train.shape[0])
-# Remove as linhas com NaN
-df_train = df_train.dropna(axis=0)
-print(f&#39;Quantidade de linhas após retirada dos NaNs: &#39;, df_train.shape[0])
-#Aproximadamente 3% de linhas eliminadas
+<span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Quantidade de linhas totais: &#39;</span><span class="p">,</span> <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Remove as linhas com NaN</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Quantidade de linhas após retirada dos NaNs: &#39;</span><span class="p">,</span> <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Aproximadamente 3% de linhas eliminadas</span>
 </pre></div>
 </div>
 </div>
@@ -726,7 +726,7 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1 = df_train.copy()
+<span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -735,8 +735,8 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>colunas = [&#39;owner&#39;, &#39;mileage&#39;, &#39;engine&#39;,
-       &#39;max_power&#39;, &#39;torque&#39;]
+<span></span><span class="n">colunas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;mileage&#39;</span><span class="p">,</span> <span class="s1">&#39;engine&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;max_power&#39;</span><span class="p">,</span> <span class="s1">&#39;torque&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -745,13 +745,13 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#base de treino
-for i in colunas:
-  df1[i] = df1[i].str.split(&#39; &#39;).str[0]
+<span></span><span class="c1">#base de treino</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colunas</span><span class="p">:</span>
+  <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-#Na base de test
-for i in colunas:
-  df_test[i] = df_test[i].str.split(&#39; &#39;).str[0]
+<span class="c1">#Na base de test</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colunas</span><span class="p">:</span>
+  <span class="n">df_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -763,11 +763,11 @@ for i in colunas:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Retirando a unidade de medida do torque
-df1[&#39;torque&#39;] = df1[&#39;torque&#39;].str.replace(&#39;Nm@&#39;, &#39;&#39;, regex=True).replace(&#39;nm@&#39;, &#39;&#39;, regex=True).replace(&#39;@&#39;, &#39;&#39;, regex=True).replace(&#39;Nm&#39;, &#39;&#39;, regex=True).replace(&#39;NM&#39;, &#39;&#39;, regex=True).replace(&#39;kgm&#39;, &#39;&#39;, regex=True)
+<span></span><span class="c1">#Retirando a unidade de medida do torque</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NM&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;kgm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-#no test
-df_test[&#39;torque&#39;] = df_test[&#39;torque&#39;].str.replace(&#39;Nm@&#39;, &#39;&#39;, regex=True).replace(&#39;nm@&#39;, &#39;&#39;, regex=True).replace(&#39;@&#39;, &#39;&#39;, regex=True).replace(&#39;Nm&#39;, &#39;&#39;, regex=True).replace(&#39;NM&#39;, &#39;&#39;, regex=True).replace(&#39;kgm&#39;, &#39;&#39;, regex=True)
+<span class="c1">#no test</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NM&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;kgm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -776,7 +776,7 @@ df_test[&#39;torque&#39;] = df_test[&#39;torque&#39;].str.replace(&#39;Nm@&#39;,
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;]
+<span></span><span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;110(11.2)&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -846,8 +846,8 @@ df_test[&#39;torque&#39;] = df_test[&#39;torque&#39;].str.replace(&#39;Nm@&#39;,
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#eliminando a linha com toque = 110(11.2)
-df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=True)
+<span></span><span class="c1">#eliminando a linha com toque = 110(11.2)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;110(11.2)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -859,7 +859,7 @@ df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=Tr
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_test[df_test[&#39;torque&#39;] == &#39;380(38.7)&#39;]
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;380(38.7)&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -925,7 +925,7 @@ df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=Tr
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_test[df_test[&#39;torque&#39;] == &#39;380(38.7)&#39;]
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;380(38.7)&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -990,7 +990,7 @@ df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=Tr
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_test.torque.replace(&#39;380(38.7)&#39;, &#39;380&#39;, inplace= True)
+<span></span><span class="n">df_test</span><span class="o">.</span><span class="n">torque</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;380(38.7)&#39;</span><span class="p">,</span> <span class="s1">&#39;380&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -999,7 +999,7 @@ df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=Tr
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_test[df_test[&#39;torque&#39;] == &#39;380(38.7)&#39;]
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;380(38.7)&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1052,10 +1052,10 @@ df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=Tr
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Colocando a marca e modelo do carro em um dicionario juntamente com sua frequência no conjunto
-import collections
-agrupamento = df1[&#39;name&#39;]
-counter=collections.Counter(agrupamento)
+<span></span><span class="c1">#Colocando a marca e modelo do carro em um dicionario juntamente com sua frequência no conjunto</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="n">agrupamento</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="n">counter</span><span class="o">=</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">agrupamento</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1064,12 +1064,12 @@ counter=collections.Counter(agrupamento)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Colocando a frequencia em uma lista para poder contar a qtd de itens diferentes
-contador = []
-for i in sorted(counter, key = counter.get, reverse = True):
-    contador.append(counter[i])
-print(&quot;Quantidade de modelos de carros distintos: &quot;,len(contador))
-print(&quot;A maior quantidade de um único modelo de carro: &quot;,max(contador))
+<span></span><span class="c1">#Colocando a frequencia em uma lista para poder contar a qtd de itens diferentes</span>
+<span class="n">contador</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="n">contador</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counter</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quantidade de modelos de carros distintos: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">contador</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A maior quantidade de um único modelo de carro: &quot;</span><span class="p">,</span><span class="nb">max</span><span class="p">(</span><span class="n">contador</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1095,11 +1095,11 @@ A maior quantidade de um único modelo de carro:  92
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Criando a coluna marca
-df1[&#39;brand&#39;] = df1[&#39;name&#39;].str.split(&#39; &#39;).str[0]
+<span></span><span class="c1">#Criando a coluna marca</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-#para a base de teste
-df_test[&#39;brand&#39;] = df_test[&#39;name&#39;].str.split(&#39; &#39;).str[0]
+<span class="c1">#para a base de teste</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1108,7 +1108,7 @@ df_test[&#39;brand&#39;] = df_test[&#39;name&#39;].str.split(&#39; &#39;).str[0]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1[&#39;brand&#39;].unique()
+<span></span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1129,7 +1129,7 @@ array([&#39;Maruti&#39;, &#39;BMW&#39;, &#39;Tata&#39;, &#39;Toyota&#39;, &#39;H
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df_test[&#39;brand&#39;].unique()
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1153,11 +1153,11 @@ array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, 
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Criando a coluna idade do carro
-df1[&#39;age&#39;] = 2021 - df1.year
+<span></span><span class="c1">#Criando a coluna idade do carro</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2021</span> <span class="o">-</span> <span class="n">df1</span><span class="o">.</span><span class="n">year</span>
 
-#para a base de teste
-df_test[&#39;age&#39;] = 2021 - df_test.year
+<span class="c1">#para a base de teste</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2021</span> <span class="o">-</span> <span class="n">df_test</span><span class="o">.</span><span class="n">year</span>
 </pre></div>
 </div>
 </div>
@@ -1169,18 +1169,18 @@ df_test[&#39;age&#39;] = 2021 - df_test.year
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>del df1[&quot;name&quot;] #retirando a coluna name
-del df1[&quot;year&quot;] #retirando a coluna year
-del df1[&quot;torque&quot;] #retirando a coluna year ## 0.9705529686331869 (sem torque) gradiente
-#del df1[&quot;seats&quot;] #retirando a coluna year ## 0.9719490890165687 (sem seats e torque) gradiente
-#del df1[&quot;engine&quot;] #retirando a coluna year ### 0.9723490022839645 (sem engine, seats e torque) gradiente
+<span></span><span class="k">del</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna name</span>
+<span class="k">del</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna year</span>
+<span class="k">del</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;torque&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna year ## 0.9705529686331869 (sem torque) gradiente</span>
+<span class="c1">#del df1[&quot;seats&quot;] #retirando a coluna year ## 0.9719490890165687 (sem seats e torque) gradiente</span>
+<span class="c1">#del df1[&quot;engine&quot;] #retirando a coluna year ### 0.9723490022839645 (sem engine, seats e torque) gradiente</span>
 
 
-del df_test[&quot;name&quot;] #retirando a coluna name
-del df_test[&quot;year&quot;] #retirando a coluna year
-del df_test[&quot;torque&quot;] #retirando a coluna torque
-#del df_test[&quot;seats&quot;] #retirando a coluna year
-#del df_test[&quot;engine&quot;] #retirando a coluna year
+<span class="k">del</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna name</span>
+<span class="k">del</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna year</span>
+<span class="k">del</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;torque&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna torque</span>
+<span class="c1">#del df_test[&quot;seats&quot;] #retirando a coluna year</span>
+<span class="c1">#del df_test[&quot;engine&quot;] #retirando a coluna year</span>
 </pre></div>
 </div>
 </div>
@@ -1192,19 +1192,19 @@ del df_test[&quot;torque&quot;] #retirando a coluna torque
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>#Mudando o tipo de dado de algumas variáveis
-df1[&#39;mileage&#39;] = pd.to_numeric(df1[&#39;mileage&#39;])
-df1[&#39;max_power&#39;] = pd.to_numeric(df1[&#39;max_power&#39;])
-df1[&#39;engine&#39;] = pd.to_numeric(df1[&#39;engine&#39;])
-df1[&#39;seats&#39;] = pd.to_numeric(df1[&#39;seats&#39;])
-#df1[&#39;torque&#39;] = pd.to_numeric(df1[&#39;torque&#39;])
+<span></span><span class="c1">#Mudando o tipo de dado de algumas variáveis</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">])</span>
+<span class="c1">#df1[&#39;torque&#39;] = pd.to_numeric(df1[&#39;torque&#39;])</span>
 
-#Base de Teste
-df_test[&#39;mileage&#39;] = pd.to_numeric(df_test[&#39;mileage&#39;])
-df_test[&#39;max_power&#39;] = pd.to_numeric(df_test[&#39;max_power&#39;])
-df_test[&#39;engine&#39;] = pd.to_numeric(df_test[&#39;engine&#39;])
-df_test[&#39;seats&#39;] = pd.to_numeric(df_test[&#39;seats&#39;])
-#df_test[&#39;torque&#39;] = pd.to_numeric(df_test[&#39;torque&#39;])
+<span class="c1">#Base de Teste</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">])</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">])</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">])</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">])</span>
+<span class="c1">#df_test[&#39;torque&#39;] = pd.to_numeric(df_test[&#39;torque&#39;])</span>
 </pre></div>
 </div>
 </div>
@@ -1219,17 +1219,17 @@ df_test[&#39;seats&#39;] = pd.to_numeric(df_test[&#39;seats&#39;])
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn import preprocessing
-le = preprocessing.LabelEncoder()
-#base de treino
-for i in range(0, len(df1.columns.values)):
-  if df1.dtypes[i] == &#39;O&#39;:
-    df1.iloc[:, i] = le.fit_transform(df1.iloc[:, i]).astype(&#39;str&#39;)
+<span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="c1">#base de treino</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)):</span>
+  <span class="k">if</span> <span class="n">df1</span><span class="o">.</span><span class="n">dtypes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span>
+    <span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
 
-#Na base de test
-for i in range(0, len(df_test.columns.values)):
-  if df_test.dtypes[i] == &#39;O&#39;:
-    df_test.iloc[:, i] = le.fit_transform(df_test.iloc[:, i]).astype(&#39;str&#39;)
+<span class="c1">#Na base de test</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)):</span>
+  <span class="k">if</span> <span class="n">df_test</span><span class="o">.</span><span class="n">dtypes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span>
+    <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1238,7 +1238,7 @@ for i in range(0, len(df_test.columns.values)):
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1.info()
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1273,7 +1273,7 @@ memory usage: 561.6+ KB
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1.head(5)
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1399,11 +1399,11 @@ memory usage: 561.6+ KB
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plt.figure(figsize=(16, 6))
-# define the mask to set the values in the upper triangle to True
-mask = np.triu(np.ones_like(df1.corr(), dtype=np.bool))
-heatmap = sns.heatmap(df1.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap=&#39;BrBG&#39;)
-heatmap.set_title(&#39;Correlation Heatmap&#39;, fontdict={&#39;fontsize&#39;:18}, pad=16);
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># define the mask to set the values in the upper triangle to True</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">))</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BrBG&#39;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Correlation Heatmap&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">},</span> <span class="n">pad</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1423,28 +1423,28 @@ heatmap.set_title(&#39;Correlation Heatmap&#39;, fontdict={&#39;fontsize&#39;:18
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>c = [&#39;selling_price&#39;,&#39;km_driven&#39;,&#39;mileage&#39;,&#39;engine&#39;, &#39;max_power&#39;, &#39;seats&#39;, &#39;age&#39;]
+<span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;selling_price&#39;</span><span class="p">,</span><span class="s1">&#39;km_driven&#39;</span><span class="p">,</span><span class="s1">&#39;mileage&#39;</span><span class="p">,</span><span class="s1">&#39;engine&#39;</span><span class="p">,</span> <span class="s1">&#39;max_power&#39;</span><span class="p">,</span> <span class="s1">&#39;seats&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]</span>
 
-for i in c:
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
 
-  sns.set(style=&quot;ticks&quot;)
+  <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
 
-  x = df1[i]
-  coluna = i
-  mu = round(x.mean(),2) # mean of distribution
-  sigma = round(x.std(),2)  # standard deviation of distribution
+  <span class="n">x</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="n">coluna</span> <span class="o">=</span> <span class="n">i</span>
+  <span class="n">mu</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># mean of distribution</span>
+  <span class="n">sigma</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># standard deviation of distribution</span>
 
-  f, (ax_box, ax_hist) = plt.subplots(2)
+  <span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_box</span><span class="p">,</span> <span class="n">ax_hist</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-  sns.boxplot(x=x, ax=ax_box)
-  sns.histplot(x=x, ax=ax_hist)
+  <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_box</span><span class="p">)</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">)</span>
 
-  ax_box.set(yticks=[])
-  sns.despine(ax=ax_hist)
-  sns.despine(ax=ax_box, left=True)
-  ax_box.set_title(&#39;Boxplot e Histograma de {}\n $\mu={}$, $\sigma={}$&#39;.format(coluna, mu,sigma))
+  <span class="n">ax_box</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">)</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_box</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">ax_box</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Boxplot e Histograma de </span><span class="si">{}</span><span class="se">\n</span><span class="s1"> $\mu=</span><span class="si">{}</span><span class="s1">$, $\sigma=</span><span class="si">{}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coluna</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">))</span>
 
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1508,7 +1508,7 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1.head()
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1633,7 +1633,7 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>colunas = df1.iloc[:,1:].columns
+<span></span><span class="n">colunas</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
@@ -1642,7 +1642,7 @@ plt.show()
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>colunas
+<span></span><span class="n">colunas</span>
 </pre></div>
 </div>
 </div>
@@ -1665,10 +1665,10 @@ Index([&#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;, &#39;transmis
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>data = df1.to_numpy()
-nrow,ncol = df1.shape
-y = data[:,:1]
-X = data[:,1:]
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">nrow</span><span class="p">,</span><span class="n">ncol</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1677,22 +1677,22 @@ X = data[:,1:]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
+<span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 
-scaler_train = StandardScaler()
-#scaler_train = MinMaxScaler()
-X = scaler_train.fit_transform(X)
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-#Padronizando os precos tbm
-#scaler_train = StandardScaler()
-#scaler_train = MinMaxScaler()
-#y = scaler_train.fit_transform(y)
+<span class="c1">#Padronizando os precos tbm</span>
+<span class="c1">#scaler_train = StandardScaler()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="c1">#y = scaler_train.fit_transform(y)</span>
 
-#Vamos padronizar o teste tbm
-scaler_train = StandardScaler()
-#scaler_train = MinMaxScaler()
-df_test1 = scaler_train.fit_transform(df_test)
+<span class="c1">#Vamos padronizar o teste tbm</span>
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">df_test1</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1701,8 +1701,8 @@ df_test1 = scaler_train.fit_transform(df_test)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>print(y.shape)
-print(X.shape)
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1723,9 +1723,9 @@ print(X.shape)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.model_selection import train_test_split
+<span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 4)
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1738,8 +1738,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from catboost import CatBoostRegressor
-from sklearn.model_selection import GridSearchCV
+<span></span><span class="kn">from</span> <span class="nn">catboost</span> <span class="kn">import</span> <span class="n">CatBoostRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 </pre></div>
 </div>
 </div>
@@ -1748,13 +1748,13 @@ from sklearn.model_selection import GridSearchCV
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span> parameters = {&#39;depth&#39;         : [6,8,10],
-                  &#39;learning_rate&#39; : [0.01, 0.05, 0.1],
-                  &#39;iterations&#39;    : [30, 50, 100]
-                 }
-model_CBR = CatBoostRegressor(logging_level=&#39;Silent&#39;)
+<span></span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;depth&#39;</span>         <span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+                  <span class="s1">&#39;learning_rate&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                  <span class="s1">&#39;iterations&#39;</span>    <span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+                 <span class="p">}</span>
+<span class="n">model_CBR</span> <span class="o">=</span> <span class="n">CatBoostRegressor</span><span class="p">(</span><span class="n">logging_level</span><span class="o">=</span><span class="s1">&#39;Silent&#39;</span><span class="p">)</span>
 
-eval_set=[(X_train, y_train), (X_test, y_test)]
+<span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1763,16 +1763,16 @@ eval_set=[(X_train, y_train), (X_test, y_test)]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<span></span><span class="o">%%time</span>
 
-grid = GridSearchCV(estimator=model_CBR, param_grid = parameters, cv = 10, n_jobs=-1, scoring=&#39;r2&#39;)
-grid.fit(X_train, y_train, eval_set=eval_set, early_stopping_rounds=10)
-#grid.fit(X_train, y_train)
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model_CBR</span><span class="p">,</span> <span class="n">param_grid</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#grid.fit(X_train, y_train)</span>
 
 
 
-print(&quot;Melhor modelo: {}&quot;.format(grid.best_estimator_))
-print(&quot;Melhor score: {}&quot;.format(grid.best_score_))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor modelo: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1792,12 +1792,12 @@ Wall time: 1min 56s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.metrics import r2_score
-y_predict = grid.predict(X_test)
+<span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))
-r2 = r2_score(y_test,y_predict)
-print(r2)
+<span class="c1">#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_predict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1818,27 +1818,27 @@ print(r2)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>def plot_feature_importance(importance,names,model_type):
+<span></span><span class="k">def</span> <span class="nf">plot_feature_importance</span><span class="p">(</span><span class="n">importance</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">model_type</span><span class="p">):</span>
 
-    #Create arrays from feature importance and feature names
-    feature_importance = np.array(importance)
-    feature_names = np.array(names)
+    <span class="c1">#Create arrays from feature importance and feature names</span>
+    <span class="n">feature_importance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">importance</span><span class="p">)</span>
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
 
-    #Create a DataFrame using a Dictionary
-    data={&#39;feature_names&#39;:feature_names,&#39;feature_importance&#39;:feature_importance}
-    fi_df = pd.DataFrame(data)
+    <span class="c1">#Create a DataFrame using a Dictionary</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;feature_names&#39;</span><span class="p">:</span><span class="n">feature_names</span><span class="p">,</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">:</span><span class="n">feature_importance</span><span class="p">}</span>
+    <span class="n">fi_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-    #Sort the DataFrame in order decreasing feature importance
-    fi_df.sort_values(by=[&#39;feature_importance&#39;], ascending=False,inplace=True)
+    <span class="c1">#Sort the DataFrame in order decreasing feature importance</span>
+    <span class="n">fi_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    #Define size of bar plot
-    plt.figure(figsize=(10,8))
-    #Plot Searborn bar chart
-    sns.barplot(x=fi_df[&#39;feature_importance&#39;], y=fi_df[&#39;feature_names&#39;])
-    #Add chart labels
-    plt.title(model_type + &#39;FEATURE IMPORTANCE&#39;)
-    plt.xlabel(&#39;FEATURE IMPORTANCE&#39;)
-    plt.ylabel(&#39;FEATURE NAMES&#39;)
+    <span class="c1">#Define size of bar plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="c1">#Plot Searborn bar chart</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">fi_df</span><span class="p">[</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">fi_df</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+    <span class="c1">#Add chart labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">model_type</span> <span class="o">+</span> <span class="s1">&#39;FEATURE IMPORTANCE&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;FEATURE IMPORTANCE&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;FEATURE NAMES&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1847,7 +1847,7 @@ print(r2)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>plot_feature_importance(grid.best_estimator_.get_feature_importance(),colunas,&#39;CATBOOST &#39;)
+<span></span><span class="n">plot_feature_importance</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_feature_importance</span><span class="p">(),</span><span class="n">colunas</span><span class="p">,</span><span class="s1">&#39;CATBOOST &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1865,11 +1865,11 @@ print(r2)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df1.head()
-c = [&#39;owner&#39;, &#39;seats&#39;, &#39;seller_type&#39;]
-df2 = df1.drop(labels = c, axis = 1)
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;seats&#39;</span><span class="p">,</span> <span class="s1">&#39;seller_type&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
-df_test2 = df_test.drop(labels = c, axis = 1)
+<span class="n">df_test2</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1878,7 +1878,7 @@ df_test2 = df_test.drop(labels = c, axis = 1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>df2
+<span></span><span class="n">df2</span>
 </pre></div>
 </div>
 </div>
@@ -2058,22 +2058,22 @@ df_test2 = df_test.drop(labels = c, axis = 1)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
+<span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 
-data = df2.to_numpy()
-nrow,ncol = df2.shape
-y = data[:,:1]
-X = data[:,1:]
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">nrow</span><span class="p">,</span><span class="n">ncol</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
 
-scaler_train = StandardScaler()
-#scaler_train = MinMaxScaler()
-X = scaler_train.fit_transform(X)
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
-#Vamos padronizar o teste tbm
-scaler_train = StandardScaler()
-#scaler_train = MinMaxScaler()
-df_test2 = scaler_train.fit_transform(df_test2)
+<span class="c1">#Vamos padronizar o teste tbm</span>
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">df_test2</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_test2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2082,9 +2082,9 @@ df_test2 = scaler_train.fit_transform(df_test2)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.model_selection import train_test_split
+<span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 4)
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2093,13 +2093,13 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, rando
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>parameters = {&#39;depth&#39;         : [6,8,10],
-                  &#39;learning_rate&#39; : [0.01, 0.05, 0.1],
-                  &#39;iterations&#39;    : [30, 50, 100]
-                 }
-model_CBR = CatBoostRegressor()
+<span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;depth&#39;</span>         <span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+                  <span class="s1">&#39;learning_rate&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                  <span class="s1">&#39;iterations&#39;</span>    <span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+                 <span class="p">}</span>
+<span class="n">model_CBR</span> <span class="o">=</span> <span class="n">CatBoostRegressor</span><span class="p">()</span>
 
-eval_set=[(X_train, y_train), (X_test, y_test)]
+<span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -2108,19 +2108,19 @@ eval_set=[(X_train, y_train), (X_test, y_test)]
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<span></span><span class="o">%%time</span>
 
-grid = GridSearchCV(estimator=model_CBR, param_grid = parameters, cv = 10, n_jobs=-1, scoring=&#39;r2&#39;)
-grid.fit(X_train, y_train, eval_set=eval_set, early_stopping_rounds=10)
-#grid.fit(X_train, y_train)
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model_CBR</span><span class="p">,</span> <span class="n">param_grid</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#grid.fit(X_train, y_train)</span>
 
-y_predict = grid.predict(X_test)
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))
-#r2 = r2_score(y_test,y_linear_pred)
+<span class="c1">#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))</span>
+<span class="c1">#r2 = r2_score(y_test,y_linear_pred)</span>
 
-print(&quot;Melhor modelo: {}&quot;.format(grid.best_estimator_))
-print(&quot;Melhor score: {}&quot;.format(grid.best_score_))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor modelo: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2246,8 +2246,8 @@ Wall time: 1min 58s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.model_selection import GridSearchCV
+<span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 </pre></div>
 </div>
 </div>
@@ -2256,22 +2256,22 @@ from sklearn.model_selection import GridSearchCV
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>%%time
+<span></span><span class="o">%%time</span>
 
-parameters = {&#39;max_depth&#39;:[4], &#39;learning_rate&#39;:[0.02],
-             &quot;n_estimators&quot;:[3000], &quot;loss&quot;:[&quot;ls&quot;],
-              &quot;criterion&quot;:[&quot;friedman_mse&quot;]}
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;learning_rate&#39;</span><span class="p">:[</span><span class="mf">0.02</span><span class="p">],</span>
+             <span class="s2">&quot;n_estimators&quot;</span><span class="p">:[</span><span class="mi">3000</span><span class="p">],</span> <span class="s2">&quot;loss&quot;</span><span class="p">:[</span><span class="s2">&quot;ls&quot;</span><span class="p">],</span>
+              <span class="s2">&quot;criterion&quot;</span><span class="p">:[</span><span class="s2">&quot;friedman_mse&quot;</span><span class="p">]}</span>
 
-grb_model = GridSearchCV(GradientBoostingRegressor(), parameters,
-                    cv = 10, scoring = &quot;r2&quot;, n_jobs = -1, verbose = 3,
-                    refit = True)
+<span class="n">grb_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span> <span class="n">parameters</span><span class="p">,</span>
+                    <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+                    <span class="n">refit</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-grb_model.fit(X_train, y_train.ravel())
-y_pred_train = grb_model.predict(X_train)
+<span class="n">grb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">grb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 
 
-print(&quot;Melhor modelo: {}&quot;.format(grb_model.best_estimator_))
-print(&quot;Melhor score: {}&quot;.format(grb_model.best_score_))
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor modelo: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grb_model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grb_model</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2320,13 +2320,13 @@ Wall time: 1min 54s
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>y_pred = grid.best_estimator_.predict(df_test2)
-y_pred = np.array(y_pred, dtype = int)
-prediction = pd.DataFrame()
-prediction[&#39;Id&#39;] = Id
-prediction[&#39;selling_price&#39;] = y_pred
+<span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test2</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Id</span>
+<span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;selling_price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
 
-prediction.to_csv(&#39;catboost2.csv&#39;, index = False)
+<span class="n">prediction</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;catboost2.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2335,7 +2335,7 @@ prediction.to_csv(&#39;catboost2.csv&#39;, index = False)
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>prediction.head(10)
+<span></span><span class="n">prediction</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

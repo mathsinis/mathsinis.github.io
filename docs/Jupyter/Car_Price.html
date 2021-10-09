@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Objetivo &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -37,11 +36,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Projetos</span></p>
+              <p class="caption"><span class="caption-text">Projetos</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="teste.html">Testando</a></li>
 </ul>
-<p><span class="caption-text">Estudo</span></p>
+<p class="caption"><span class="caption-text">Estudo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="regressao_simples.html">Modelo de regressão linear simples</a></li>
 </ul>
@@ -420,11 +419,11 @@ Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;km_driven&#39;, &#39;f
       dtype=&#39;object&#39;)
 </pre></div></div>
 </div>
-<section id="Objetivo">
+<div class="section" id="Objetivo">
 <h1>Objetivo<a class="headerlink" href="#Objetivo" title="Permalink to this headline">¶</a></h1>
 <p>Um dos problemas que ocorrem na OLX da Índia, pela baixa volumetria de dados, é a empresa não conseguir estimar um preço de venda para o carro do seu cliente baseado em algumas características do veículo. O objetivo é estimar tal valor a partir de dados do concorrente (CarDekho).</p>
-</section>
-<section id="Análise-qualitativa-e-quantitativa-dos-dados">
+</div>
+<div class="section" id="Análise-qualitativa-e-quantitativa-dos-dados">
 <h1>Análise qualitativa e quantitativa dos dados<a class="headerlink" href="#Análise-qualitativa-e-quantitativa-dos-dados" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -576,7 +575,7 @@ Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;km_driven&#39;, &#39;f
 </pre></div>
 </div>
 </div>
-<section id="Analise-de-dados-nulos">
+<div class="section" id="Analise-de-dados-nulos">
 <h2>Analise de dados nulos<a class="headerlink" href="#Analise-de-dados-nulos" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -693,8 +692,8 @@ Quantidade de linhas totais:  5689
 Quantidade de linhas após retirada dos NaNs:  5531
 </pre></div></div>
 </div>
-</section>
-<section id="Categoria-das-variaveis">
+</div>
+<div class="section" id="Categoria-das-variaveis">
 <h2>Categoria das variaveis<a class="headerlink" href="#Categoria-das-variaveis" title="Permalink to this headline">¶</a></h2>
 <p>Os dados são compostos pelas variáveis:</p>
 <ul class="simple">
@@ -718,8 +717,8 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </ul>
 <p>Nota-se que 4 variáveis são numéricas, mas é necessário uma tratativa para retirar as strings que representam a unidade de medida. Ao todo, considerando as variáveis que precisam ser tratadas, há 7 variáveis numéricas e 6 variáveis categóricas qualitativas.</p>
 <p>Nota-se que 4 variáveis são numéricas, mas é necessário uma tratativa para retirar as strings que representam a unidade de medida. Ao todo, considerando as variáveis que precisam ser tratadas, há 7 variáveis numéricas e 6 variáveis categóricas qualitativas.</p>
-</section>
-<section id="Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm">
+</div>
+<div class="section" id="Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm">
 <h2>Retirando a palavra owner da coluna owner, retirando a unidade de medida de mileage, engine e max power e retirando a segunda unidade de medida utilizada no torque (rpm) e deixando apenas a unidade Nm<a class="headerlink" href="#Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -755,8 +754,8 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Retirando-a-unidade-de-medida-do-torque">
+</div>
+<div class="section" id="Retirando-a-unidade-de-medida-do-torque">
 <h2>Retirando a unidade de medida do torque<a class="headerlink" href="#Retirando-a-unidade-de-medida-do-torque" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -839,7 +838,7 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </div></div>
 </div>
 <p>Nao temos esse problema na base de teste</p>
-<section id="Tratando-a-linha-com-torque-(11.2)-no-treino">
+<div class="section" id="Tratando-a-linha-com-torque-(11.2)-no-treino">
 <h3>Tratando a linha com torque (11.2) no treino<a class="headerlink" href="#Tratando-a-linha-com-torque-(11.2)-no-treino" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -851,8 +850,8 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Tratando-linha-380(38.7)-no-torque-(base-teste)">
+</div>
+<div class="section" id="Tratando-linha-380(38.7)-no-torque-(base-teste)">
 <h3>Tratando linha 380(38.7) no torque (base teste)<a class="headerlink" href="#Tratando-linha-380(38.7)-no-torque-(base-teste)" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1044,8 +1043,8 @@ Quantidade de linhas após retirada dos NaNs:  5531
 </table>
 </div></div>
 </div>
-</section>
-<section id="Analisando-nome-dos-carros">
+</div>
+<div class="section" id="Analisando-nome-dos-carros">
 <h3>Analisando nome dos carros<a class="headerlink" href="#Analisando-nome-dos-carros" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1083,12 +1082,12 @@ A maior quantidade de um único modelo de carro:  92
 </pre></div></div>
 </div>
 <p>Como o nome dos carros é muito variado, não é interessante estar presente no modelo, porém, a informação da marca do carro pode ser importante, assim como outras informações oriundas da própria base.</p>
-</section>
-</section>
-</section>
-<section id="Feature-engineering">
+</div>
+</div>
+</div>
+<div class="section" id="Feature-engineering">
 <h1>Feature engineering<a class="headerlink" href="#Feature-engineering" title="Permalink to this headline">¶</a></h1>
-<section id="Criando-a-feature-marca">
+<div class="section" id="Criando-a-feature-marca">
 <h2>Criando a feature marca<a class="headerlink" href="#Criando-a-feature-marca" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1145,8 +1144,8 @@ array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, 
        &#39;Audi&#39;, &#39;Land&#39;, &#39;Isuzu&#39;, &#39;Force&#39;], dtype=object)
 </pre></div></div>
 </div>
-</section>
-<section id="Criando-a-coluna-idade-do-carro">
+</div>
+<div class="section" id="Criando-a-coluna-idade-do-carro">
 <h2>Criando a coluna idade do carro<a class="headerlink" href="#Criando-a-coluna-idade-do-carro" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1161,8 +1160,8 @@ array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, 
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Retirando-a-coluna-name-e-year">
+</div>
+<div class="section" id="Retirando-a-coluna-name-e-year">
 <h2>Retirando a coluna name e year<a class="headerlink" href="#Retirando-a-coluna-name-e-year" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1184,8 +1183,8 @@ array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, 
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Adequando-o-tipo-de-dado-de-algumas-variáveis">
+</div>
+<div class="section" id="Adequando-o-tipo-de-dado-de-algumas-variáveis">
 <h2>Adequando o tipo de dado de algumas variáveis<a class="headerlink" href="#Adequando-o-tipo-de-dado-de-algumas-variáveis" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1208,11 +1207,11 @@ array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, 
 </pre></div>
 </div>
 </div>
-</section>
-</section>
-<section id="Transformar-as-variaveis-categoricas-para-a-regressão">
+</div>
+</div>
+<div class="section" id="Transformar-as-variaveis-categoricas-para-a-regressão">
 <h1>Transformar as variaveis categoricas para a regressão<a class="headerlink" href="#Transformar-as-variaveis-categoricas-para-a-regressão" title="Permalink to this headline">¶</a></h1>
-<section id="Substituicao-variaveis-categoricas-por-rótulos-numéricos">
+<div class="section" id="Substituicao-variaveis-categoricas-por-rótulos-numéricos">
 <h2>Substituicao variaveis categoricas por rótulos numéricos<a class="headerlink" href="#Substituicao-variaveis-categoricas-por-rótulos-numéricos" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1415,8 +1414,8 @@ memory usage: 561.6+ KB
 </div>
 </div>
 <p>Correlacoes muito altas entre variaveis do treino poderiam ser reduntantes, observamos que isso nao ocorre</p>
-</section>
-<section id="Analise-das-variaveis-quantitativas">
+</div>
+<div class="section" id="Analise-das-variaveis-quantitativas">
 <h2>Analise das variaveis quantitativas<a class="headerlink" href="#Analise-das-variaveis-quantitativas" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1498,9 +1497,9 @@ memory usage: 561.6+ KB
 </div>
 </div>
 <p>Nota se que a variavel que devemos prever, selling price tem uma altissima variancia e quase todas as variaveis quantitativas possuem outliers</p>
-</section>
-</section>
-<section id="Preparacao-dos-dados">
+</div>
+</div>
+<div class="section" id="Preparacao-dos-dados">
 <h1>Preparacao dos dados<a class="headerlink" href="#Preparacao-dos-dados" title="Permalink to this headline">¶</a></h1>
 <p>antes de fazer a feature selection vamos normalizar e separar o que deve ser predito das variaveis duvida: deve ser normalizado antes da feature selection?</p>
 <div class="nbinput docutils container">
@@ -1656,7 +1655,7 @@ Index([&#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;, &#39;transmis
       dtype=&#39;object&#39;)
 </pre></div></div>
 </div>
-<section id="Padronizacao">
+<div class="section" id="Padronizacao">
 <h2>Padronizacao<a class="headerlink" href="#Padronizacao" title="Permalink to this headline">¶</a></h2>
 <p>Vamos padronizar a base a ser predita tbm</p>
 <p>Transformar para formato numpy para nao termos erro na normalizacao</p>
@@ -1715,8 +1714,8 @@ Index([&#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;, &#39;transmis
 (5530, 11)
 </pre></div></div>
 </div>
-</section>
-<section id="Separacao-treino-e-teste">
+</div>
+<div class="section" id="Separacao-treino-e-teste">
 <h2>Separacao treino e teste<a class="headerlink" href="#Separacao-treino-e-teste" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1729,9 +1728,9 @@ Index([&#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;, &#39;transmis
 </pre></div>
 </div>
 </div>
-</section>
-</section>
-<section id="Catboost">
+</div>
+</div>
+<div class="section" id="Catboost">
 <h1>Catboost<a class="headerlink" href="#Catboost" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -1809,8 +1808,8 @@ Wall time: 1min 56s
 0.9547105241909506
 </pre></div></div>
 </div>
-</section>
-<section id="Feature-Selection">
+</div>
+<div class="section" id="Feature-Selection">
 <h1>Feature Selection<a class="headerlink" href="#Feature-Selection" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://www.analyseup.com/learn-python-for-data-science/python-random-forest-feature-importance-plot.html">https://www.analyseup.com/learn-python-for-data-science/python-random-forest-feature-importance-plot.html</a></p>
 <div class="nbinput nblast docutils container">
@@ -1858,7 +1857,7 @@ Wall time: 1min 56s
 <img alt="../_images/Jupyter_Car_Price_82_0.png" src="../_images/Jupyter_Car_Price_82_0.png" />
 </div>
 </div>
-<section id="Vamos-tirar-as-colunas-com-menos-importancia">
+<div class="section" id="Vamos-tirar-as-colunas-com-menos-importancia">
 <h2>Vamos tirar as colunas com menos importancia<a class="headerlink" href="#Vamos-tirar-as-colunas-com-menos-importancia" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -2311,9 +2310,9 @@ CPU times: user 15.4 s, sys: 61.1 ms, total: 15.5 s
 Wall time: 1min 54s
 </pre></div></div>
 </div>
-</section>
-</section>
-<section id="Submetendo-a-predicao">
+</div>
+</div>
+<div class="section" id="Submetendo-a-predicao">
 <h1>Submetendo a predicao<a class="headerlink" href="#Submetendo-a-predicao" title="Permalink to this headline">¶</a></h1>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
@@ -2420,7 +2419,7 @@ Wall time: 1min 54s
 </table>
 </div></div>
 </div>
-</section>
+</div>
 
 
            </div>
@@ -2430,7 +2429,7 @@ Wall time: 1min 54s
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Matheus de Castro Siniscarchio.</p>
+    <p>&#169; Copyright 2021, Matheus Siniscarchio.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

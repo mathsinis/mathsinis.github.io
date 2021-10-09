@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modelo de regressão linear simples &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -38,11 +37,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p><span class="caption-text">Projetos</span></p>
+              <p class="caption"><span class="caption-text">Projetos</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="teste.html">Testando</a></li>
 </ul>
-<p><span class="caption-text">Estudo</span></p>
+<p class="caption"><span class="caption-text">Estudo</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modelo de regressão linear simples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Modelo">Modelo</a></li>
@@ -348,10 +347,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Modelo-de-regressão-linear-simples">
+<div class="section" id="Modelo-de-regressão-linear-simples">
 <h1>Modelo de regressão linear simples<a class="headerlink" href="#Modelo-de-regressão-linear-simples" title="Permalink to this headline">¶</a></h1>
 <p>Vamos implementar um modelo de regressão linear simples em python</p>
-<section id="Modelo">
+<div class="section" id="Modelo">
 <h2>Modelo<a class="headerlink" href="#Modelo" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[ \begin{equation}
@@ -364,8 +363,8 @@ Y = β_0 + β1X + ε
 <p>Y: dependente, resposta</p>
 <p>ε : variável aleatória da diferença entre o valor observado de y e a reta <span class="math notranslate nohighlight">\((β_0 + β1X)\)</span>, erro estatístico</p>
 <p>Como a equação dada envolve apenas uma variavel regressora, é chamada de <strong>regressão linear simples</strong></p>
-</section>
-<section id="Notação">
+</div>
+<div class="section" id="Notação">
 <h2>Notação<a class="headerlink" href="#Notação" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\overline{X} = \frac{\sum_{i=1}^n X_i}{n}; \overline{Y} = \frac{\sum_{i=1}^n Y_i}{n}\]</div>
@@ -381,8 +380,8 @@ Y = β_0 + β1X + ε
 \[\hat{β_1} = \frac{S_{XY}}{S_{XX}}\]</div>
 <div class="math notranslate nohighlight">
 \[\hat{β_0} = \overline Y − \hat β_1X\]</div>
-</section>
-<section id="Implementando-em-python">
+</div>
+<div class="section" id="Implementando-em-python">
 <h2>Implementando em python<a class="headerlink" href="#Implementando-em-python" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -431,8 +430,8 @@ Y = β_0 + β1X + ε
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Conjunto-de-pontos-para-a-regressão">
+</div>
+<div class="section" id="Conjunto-de-pontos-para-a-regressão">
 <h2>Conjunto de pontos para a regressão<a class="headerlink" href="#Conjunto-de-pontos-para-a-regressão" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
@@ -470,8 +469,8 @@ Coeficiente m:0.18054672600127145
 Coeficient b:-9.47107438016529
 </pre></div></div>
 </div>
-</section>
-<section id="Utilizando-a-biblioteca-do-sklearn">
+</div>
+<div class="section" id="Utilizando-a-biblioteca-do-sklearn">
 <h2>Utilizando a biblioteca do sklearn<a class="headerlink" href="#Utilizando-a-biblioteca-do-sklearn" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
@@ -493,8 +492,8 @@ Coeficiente m:0.1805467260012714
 Coeficient b:-9.47107438016528
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
            </div>
@@ -506,7 +505,7 @@ Coeficient b:-9.47107438016528
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, Matheus de Castro Siniscarchio.</p>
+    <p>&#169; Copyright 2021, Matheus Siniscarchio.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

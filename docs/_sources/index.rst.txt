@@ -1,5 +1,5 @@
-.. Math documentation master file, created by
-   sphinx-quickstart on Thu Aug 26 20:50:31 2021.
+.. Matheus Siniscarchio documentation master file, created by
+   sphinx-quickstart on Sat Oct  9 14:16:36 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -14,14 +14,13 @@ Estudante de Estatística e Ciência de Dados (bacharelado), minhas áreas de in
 * Aprendizado de máquina
 * Aprendizado profundo
 * Redes Complexas
-* teste
 
 Contato: m.siniscarchio@gmail.com
 
 .. toctree::
    :maxdepth: 2
    :caption: Projetos
-   
+
    Jupyter/teste.ipynb
 
 .. toctree::

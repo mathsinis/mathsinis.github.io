@@ -14,6 +14,7 @@ Estudante de Estatística e Ciência de Dados (bacharelado), minhas áreas de in
 * Aprendizado de máquina
 * Aprendizado profundo
 * Redes Complexas
+* teste
 
 Contato: m.siniscarchio@gmail.com
 

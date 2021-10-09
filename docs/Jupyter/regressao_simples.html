@@ -1,75 +1,35 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Modelo de regressão linear simples &mdash; Matheus Siniscarchio 1 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Modelo de regressão linear simples &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Testando" href="teste.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../index.html" class="icon icon-home"> Matheus Siniscarchio
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,23 +37,12 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Projetos</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Projetos</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="teste.html">Testando</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Estudo</span></p>
+<p><span class="caption-text">Estudo</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Modelo de regressão linear simples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Modelo">Modelo</a></li>
@@ -105,71 +54,30 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Matheus Siniscarchio</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Modelo de regressão linear simples</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/Jupyter/regressao_simples.ipynb.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   
 <style>
 /* CSS for nbsphinx extension */
@@ -440,10 +348,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Modelo-de-regressão-linear-simples">
+<section id="Modelo-de-regressão-linear-simples">
 <h1>Modelo de regressão linear simples<a class="headerlink" href="#Modelo-de-regressão-linear-simples" title="Permalink to this headline">¶</a></h1>
 <p>Vamos implementar um modelo de regressão linear simples em python</p>
-<div class="section" id="Modelo">
+<section id="Modelo">
 <h2>Modelo<a class="headerlink" href="#Modelo" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[ \begin{equation}
@@ -456,8 +364,8 @@ Y = β_0 + β1X + ε
 <p>Y: dependente, resposta</p>
 <p>ε : variável aleatória da diferença entre o valor observado de y e a reta <span class="math notranslate nohighlight">\((β_0 + β1X)\)</span>, erro estatístico</p>
 <p>Como a equação dada envolve apenas uma variavel regressora, é chamada de <strong>regressão linear simples</strong></p>
-</div>
-<div class="section" id="Notação">
+</section>
+<section id="Notação">
 <h2>Notação<a class="headerlink" href="#Notação" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\overline{X} = \frac{\sum_{i=1}^n X_i}{n}; \overline{Y} = \frac{\sum_{i=1}^n Y_i}{n}\]</div>
@@ -473,17 +381,17 @@ Y = β_0 + β1X + ε
 \[\hat{β_1} = \frac{S_{XY}}{S_{XX}}\]</div>
 <div class="math notranslate nohighlight">
 \[\hat{β_0} = \overline Y − \hat β_1X\]</div>
-</div>
-<div class="section" id="Implementando-em-python">
+</section>
+<section id="Implementando-em-python">
 <h2>Implementando em python<a class="headerlink" href="#Implementando-em-python" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span></span>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
 </pre></div>
 </div>
 </div>
@@ -492,47 +400,47 @@ Y = β_0 + β1X + ε
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">least_squares2</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    X: Vetor com valores de x</span>
-<span class="sd">    Y: Vetor com valores de y</span>
-<span class="sd">    Retorna os coeficientes m e b da equação</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span></span>def least_squares2(X,Y):
+    &#39;&#39;&#39;
+    X: Vetor com valores de x
+    Y: Vetor com valores de y
+    Retorna os coeficientes m e b da equação
+    &#39;&#39;&#39;
 
-    <span class="c1">#Valores para facilitar</span>
-    <span class="n">x_a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">y_a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
-    <span class="n">x2_a</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">xy_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    #Valores para facilitar
+    x_a = sum(X)/len(X)
+    y_a = sum(Y)/len(Y)
+    x2_a = sum(np.power(X,2))/len(X)
+    xy_a = np.dot(X,Y)/len(X)
 
-    <span class="c1">#coeficiente angular (m) e variavel idenpendente b : y = mx + b</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">xy_a</span> <span class="o">-</span> <span class="n">x_a</span> <span class="o">*</span> <span class="n">y_a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x2_a</span> <span class="o">-</span> <span class="n">x_a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    #coeficiente angular (m) e variavel idenpendente b : y = mx + b
+    m = (xy_a - x_a * y_a)/(x2_a - x_a**2)
 
-    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">x2_a</span> <span class="o">*</span> <span class="n">y_a</span> <span class="o">-</span> <span class="n">x_a</span> <span class="o">*</span> <span class="n">xy_a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x2_a</span> <span class="o">-</span> <span class="n">x_a</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    b = (x2_a * y_a - x_a * xy_a)/(x2_a - x_a**2)
 
-    <span class="c1">#vetor com predição de y nos pontos do vetor x</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">m</span> <span class="o">+</span> <span class="n">b</span>
+    #vetor com predição de y nos pontos do vetor x
+    X = np.array(X)
+    y_pred = X*m + b
 
-    <span class="c1">#plotando o grafico</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="c1">#plotando pontos</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    #plotando o grafico
+    plt.scatter(X, Y) #plotando pontos
+    plt.plot(X, y_pred, color=&#39;red&#39;)
+    plt.show()
 
-    <span class="k">return</span> <span class="n">m</span><span class="p">,</span><span class="n">b</span>
+    return m,b
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="Conjunto-de-pontos-para-a-regressão">
+</section>
+<section id="Conjunto-de-pontos-para-a-regressão">
 <h2>Conjunto de pontos para a regressão<a class="headerlink" href="#Conjunto-de-pontos-para-a-regressão" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">58</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">88</span><span class="p">,</span><span class="mi">118</span><span class="p">,</span><span class="mi">117</span><span class="p">,</span><span class="mi">137</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span><span class="mi">149</span><span class="p">,</span><span class="mi">202</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">26</span><span class="p">])</span>
+<span></span>x = np.array([58,105,88,118,117,137,157,169,149,202])
+y = np.array([2,6,8,8,12,16,20,20,22,26])
 </pre></div>
 </div>
 </div>
@@ -541,9 +449,9 @@ Y = β_0 + β1X + ε
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">m</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">least_squares2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficiente m:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficient b:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+<span></span>m,b = least_squares2(x,y)
+print(&#39;Coeficiente m:{}&#39;.format(m))
+print(&#39;Coeficient b:{}&#39;.format(b))
 </pre></div>
 </div>
 </div>
@@ -562,17 +470,17 @@ Coeficiente m:0.18054672600127145
 Coeficient b:-9.47107438016529
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Utilizando-a-biblioteca-do-sklearn">
+</section>
+<section id="Utilizando-a-biblioteca-do-sklearn">
 <h2>Utilizando a biblioteca do sklearn<a class="headerlink" href="#Utilizando-a-biblioteca-do-sklearn" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficiente m:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coeficient b:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">))</span>
+<span></span>reg = LinearRegression().fit(x.reshape(-1,1),y)
+print(&#39;Coeficiente m:{}&#39;.format(reg.coef_[0]))
+print(&#39;Coeficient b:{}&#39;.format(reg.intercept_))
 </pre></div>
 </div>
 </div>
@@ -585,54 +493,37 @@ Coeficiente m:0.1805467260012714
 Coeficient b:-9.47107438016528
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="teste.html" class="btn btn-neutral float-left" title="Testando" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Matheus de Castro Siniscarchio.
-
-    </p>
+    <p>&#169; Copyright 2021, Matheus de Castro Siniscarchio.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

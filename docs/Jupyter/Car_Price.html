@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Objetivo &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Matheus Siniscarchio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">Projetos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="teste.html">Testando</a></li>
+</ul>
+<p><span class="caption-text">Estudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="regressao_simples.html">Modelo de regressão linear simples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Matheus Siniscarchio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Objetivo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Jupyter/Car_Price.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-1-b443ec1d6895&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-green-intense-fg ansi-bold">import</span> pandas <span class="ansi-green-intense-fg ansi-bold">as</span> pd
+<span class="ansi-green-fg">      3</span> <span class="ansi-green-intense-fg ansi-bold">import</span> matplotlib<span class="ansi-yellow-intense-fg ansi-bold">.</span>pyplot <span class="ansi-green-intense-fg ansi-bold">as</span> plt
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 4</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">import</span> seaborn <span class="ansi-green-intense-fg ansi-bold">as</span> sns
+
+<span class="ansi-red-intense-fg ansi-bold">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>!which -a python
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&#39;which&#39; is not recognized as an internal or external command,
+operable program or batch file.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_test= pd.read_csv(&quot;/content/drive/MyDrive/Graduação/Aprendizado de maquina/TRABALHOS DE APRENDIZADO DE MÁQUINA/Car - Trabalho 2/test_car_details.csv&quot;)
+df_train = pd.read_csv(&quot;/content/drive/MyDrive/Graduação/Aprendizado de maquina/TRABALHOS DE APRENDIZADO DE MÁQUINA/Car - Trabalho 2/train_car_details.csv&quot;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>print(df_train.columns)
+print(df_test.columns)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;selling_price&#39;, &#39;km_driven&#39;, &#39;fuel&#39;,
+       &#39;seller_type&#39;, &#39;transmission&#39;, &#39;owner&#39;, &#39;mileage&#39;, &#39;engine&#39;,
+       &#39;max_power&#39;, &#39;torque&#39;, &#39;seats&#39;],
+      dtype=&#39;object&#39;)
+Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;,
+       &#39;transmission&#39;, &#39;owner&#39;, &#39;mileage&#39;, &#39;engine&#39;, &#39;max_power&#39;, &#39;torque&#39;,
+       &#39;seats&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<section id="Objetivo">
+<h1>Objetivo<a class="headerlink" href="#Objetivo" title="Permalink to this headline">¶</a></h1>
+<p>Um dos problemas que ocorrem na OLX da Índia, pela baixa volumetria de dados, é a empresa não conseguir estimar um preço de venda para o carro do seu cliente baseado em algumas características do veículo. O objetivo é estimar tal valor a partir de dados do concorrente (CarDekho).</p>
+</section>
+<section id="Análise-qualitativa-e-quantitativa-dos-dados">
+<h1>Análise qualitativa e quantitativa dos dados<a class="headerlink" href="#Análise-qualitativa-e-quantitativa-dos-dados" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Verificando as variáveis
+df_train.head()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>name</th>
+      <th>year</th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Hyundai Santro GLS I - Euro I</td>
+      <td>1999</td>
+      <td>80000</td>
+      <td>110000</td>
+      <td>Petrol</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Second Owner</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Maruti Ertiga VDI</td>
+      <td>2012</td>
+      <td>459999</td>
+      <td>87000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>First Owner</td>
+      <td>20.77 kmpl</td>
+      <td>1248 CC</td>
+      <td>88.76 bhp</td>
+      <td>200Nm@ 1750rpm</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>BMW 3 Series 320d Luxury Line</td>
+      <td>2010</td>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>Diesel</td>
+      <td>Dealer</td>
+      <td>Automatic</td>
+      <td>First Owner</td>
+      <td>19.62 kmpl</td>
+      <td>1995 CC</td>
+      <td>187.74 bhp</td>
+      <td>400Nm@ 1750-2500rpm</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Tata New Safari DICOR 2.2 EX 4x2</td>
+      <td>2009</td>
+      <td>229999</td>
+      <td>212000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Third Owner</td>
+      <td>11.57 kmpl</td>
+      <td>2179 CC</td>
+      <td>138.1 bhp</td>
+      <td>320Nm@ 1700-2700rpm</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Toyota Fortuner 3.0 Diesel</td>
+      <td>2010</td>
+      <td>800000</td>
+      <td>125000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Second Owner</td>
+      <td>11.5 kmpl</td>
+      <td>2982 CC</td>
+      <td>171 bhp</td>
+      <td>343Nm@ 1400-3400rpm</td>
+      <td>7.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_train = df_train.iloc[:,1:] #retirando a coluna de id
+
+Id = df_test.Id
+df_test = df_test.iloc[:,1:] #retirando a coluna de id
+</pre></div>
+</div>
+</div>
+<section id="Analise-de-dados-nulos">
+<h2>Analise de dados nulos<a class="headerlink" href="#Analise-de-dados-nulos" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Verificado a quantidade de NaN por atributo
+df_train.isna().sum()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name               0
+year               0
+selling_price      0
+km_driven          0
+fuel               0
+seller_type        0
+transmission       0
+owner              0
+mileage          157
+engine           157
+max_power        151
+torque           158
+seats            157
+dtype: int64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Porcentagem de nan por atributo
+print(100*df_train.isna().sum()/len(df_train))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name             0.000000
+year             0.000000
+selling_price    0.000000
+km_driven        0.000000
+fuel             0.000000
+seller_type      0.000000
+transmission     0.000000
+owner            0.000000
+mileage          2.759712
+engine           2.759712
+max_power        2.654245
+torque           2.777290
+seats            2.759712
+dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Porcentagem de nan por atributo no test
+print(100*df_test.isna().sum()/len(df_test))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name            0.0
+year            0.0
+km_driven       0.0
+fuel            0.0
+seller_type     0.0
+transmission    0.0
+owner           0.0
+mileage         0.0
+engine          0.0
+max_power       0.0
+torque          0.0
+seats           0.0
+dtype: float64
+</pre></div></div>
+</div>
+<p>Pelo fatos dos NaN’s estar majoritariamente presente nas mesmas linhas e por representar um baixo volume em relação ao total (menos de 3%), tais linhas serão retiradas.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>print(f&#39;Quantidade de linhas totais: &#39;, df_train.shape[0])
+# Remove as linhas com NaN
+df_train = df_train.dropna(axis=0)
+print(f&#39;Quantidade de linhas após retirada dos NaNs: &#39;, df_train.shape[0])
+#Aproximadamente 3% de linhas eliminadas
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Quantidade de linhas totais:  5689
+Quantidade de linhas após retirada dos NaNs:  5531
+</pre></div></div>
+</div>
+</section>
+<section id="Categoria-das-variaveis">
+<h2>Categoria das variaveis<a class="headerlink" href="#Categoria-das-variaveis" title="Permalink to this headline">¶</a></h2>
+<p>Os dados são compostos pelas variáveis:</p>
+<ul class="simple">
+<li><p>Variaveis quantitativas discreta:</p></li>
+<li><p>Ano de fabricacao do carro (year)</p></li>
+<li><p>Qtd de Km dirigidos (km_driven)</p></li>
+<li><p>Potência máxima do motor (max_power)</p></li>
+<li><p>Qtd de acentos (seats)</p></li>
+<li><p>Variaveis quantitativas continuas:</p></li>
+<li><p>Quilometragem por litro (mileage)</p></li>
+<li><p>Potencia do motor (engine)</p></li>
+<li><p>Preço de venda (selling_price) <strong>Valor a ser predito</strong></p></li>
+<li><p>Variaveis qualitativas nominais:</p></li>
+<li><p>nome do carro (name)</p></li>
+<li><p>tipo de combustivel utilizado (fuel)</p></li>
+<li><p>tipo de vendendor (seller_type)</p></li>
+<li><p>transmissao (transmission)</p></li>
+<li><p>Torque: responsável pela capacidade do motor produzir força motriz, ou seja, o movimento giratório</p></li>
+<li><p>Variaveis qualitativas ordinais:</p></li>
+<li><p>Quantos donos ja possuiram o carro (owner)</p></li>
+</ul>
+<p>Nota-se que 4 variáveis são numéricas, mas é necessário uma tratativa para retirar as strings que representam a unidade de medida. Ao todo, considerando as variáveis que precisam ser tratadas, há 7 variáveis numéricas e 6 variáveis categóricas qualitativas.</p>
+<p>Nota-se que 4 variáveis são numéricas, mas é necessário uma tratativa para retirar as strings que representam a unidade de medida. Ao todo, considerando as variáveis que precisam ser tratadas, há 7 variáveis numéricas e 6 variáveis categóricas qualitativas.</p>
+</section>
+<section id="Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm">
+<h2>Retirando a palavra owner da coluna owner, retirando a unidade de medida de mileage, engine e max power e retirando a segunda unidade de medida utilizada no torque (rpm) e deixando apenas a unidade Nm<a class="headerlink" href="#Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1 = df_train.copy()
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>colunas = [&#39;owner&#39;, &#39;mileage&#39;, &#39;engine&#39;,
+       &#39;max_power&#39;, &#39;torque&#39;]
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#base de treino
+for i in colunas:
+  df1[i] = df1[i].str.split(&#39; &#39;).str[0]
+
+#Na base de test
+for i in colunas:
+  df_test[i] = df_test[i].str.split(&#39; &#39;).str[0]
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Retirando-a-unidade-de-medida-do-torque">
+<h2>Retirando a unidade de medida do torque<a class="headerlink" href="#Retirando-a-unidade-de-medida-do-torque" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Retirando a unidade de medida do torque
+df1[&#39;torque&#39;] = df1[&#39;torque&#39;].str.replace(&#39;Nm@&#39;, &#39;&#39;, regex=True).replace(&#39;nm@&#39;, &#39;&#39;, regex=True).replace(&#39;@&#39;, &#39;&#39;, regex=True).replace(&#39;Nm&#39;, &#39;&#39;, regex=True).replace(&#39;NM&#39;, &#39;&#39;, regex=True).replace(&#39;kgm&#39;, &#39;&#39;, regex=True)
+
+#no test
+df_test[&#39;torque&#39;] = df_test[&#39;torque&#39;].str.replace(&#39;Nm@&#39;, &#39;&#39;, regex=True).replace(&#39;nm@&#39;, &#39;&#39;, regex=True).replace(&#39;@&#39;, &#39;&#39;, regex=True).replace(&#39;Nm&#39;, &#39;&#39;, regex=True).replace(&#39;NM&#39;, &#39;&#39;, regex=True).replace(&#39;kgm&#39;, &#39;&#39;, regex=True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1954</th>
+      <td>Honda Jazz Select Edition Active</td>
+      <td>2011</td>
+      <td>350000</td>
+      <td>80000</td>
+      <td>Petrol</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Second</td>
+      <td>16.0</td>
+      <td>1198</td>
+      <td>90</td>
+      <td>110(11.2)</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Nao temos esse problema na base de teste</p>
+<section id="Tratando-a-linha-com-torque-(11.2)-no-treino">
+<h3>Tratando a linha com torque (11.2) no treino<a class="headerlink" href="#Tratando-a-linha-com-torque-(11.2)-no-treino" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#eliminando a linha com toque = 110(11.2)
+df1.drop(df1.loc[df1[&#39;torque&#39;] == &#39;110(11.2)&#39;].index, inplace=True)
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Tratando-linha-380(38.7)-no-torque-(base-teste)">
+<h3>Tratando linha 380(38.7) no torque (base teste)<a class="headerlink" href="#Tratando-linha-380(38.7)-no-torque-(base-teste)" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_test[df_test[&#39;torque&#39;] == &#39;380(38.7)&#39;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>885</th>
+      <td>Ford Endeavour Hurricane Limited Edition</td>
+      <td>2013</td>
+      <td>110000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Automatic</td>
+      <td>Third</td>
+      <td>12.8</td>
+      <td>2953</td>
+      <td>156</td>
+      <td>380(38.7)</td>
+      <td>7.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Nao podemos eliminar linhas da base de teste</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_test[df_test[&#39;torque&#39;] == &#39;380(38.7)&#39;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>885</th>
+      <td>Ford Endeavour Hurricane Limited Edition</td>
+      <td>2013</td>
+      <td>110000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Automatic</td>
+      <td>Third</td>
+      <td>12.8</td>
+      <td>2953</td>
+      <td>156</td>
+      <td>380(38.7)</td>
+      <td>7.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_test.torque.replace(&#39;380(38.7)&#39;, &#39;380&#39;, inplace= True)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_test[df_test[&#39;torque&#39;] == &#39;380(38.7)&#39;]
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="Analisando-nome-dos-carros">
+<h3>Analisando nome dos carros<a class="headerlink" href="#Analisando-nome-dos-carros" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Colocando a marca e modelo do carro em um dicionario juntamente com sua frequência no conjunto
+import collections
+agrupamento = df1[&#39;name&#39;]
+counter=collections.Counter(agrupamento)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Colocando a frequencia em uma lista para poder contar a qtd de itens diferentes
+contador = []
+for i in sorted(counter, key = counter.get, reverse = True):
+    contador.append(counter[i])
+print(&quot;Quantidade de modelos de carros distintos: &quot;,len(contador))
+print(&quot;A maior quantidade de um único modelo de carro: &quot;,max(contador))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Quantidade de modelos de carros distintos:  1706
+A maior quantidade de um único modelo de carro:  92
+</pre></div></div>
+</div>
+<p>Como o nome dos carros é muito variado, não é interessante estar presente no modelo, porém, a informação da marca do carro pode ser importante, assim como outras informações oriundas da própria base.</p>
+</section>
+</section>
+</section>
+<section id="Feature-engineering">
+<h1>Feature engineering<a class="headerlink" href="#Feature-engineering" title="Permalink to this headline">¶</a></h1>
+<section id="Criando-a-feature-marca">
+<h2>Criando a feature marca<a class="headerlink" href="#Criando-a-feature-marca" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Criando a coluna marca
+df1[&#39;brand&#39;] = df1[&#39;name&#39;].str.split(&#39; &#39;).str[0]
+
+#para a base de teste
+df_test[&#39;brand&#39;] = df_test[&#39;name&#39;].str.split(&#39; &#39;).str[0]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1[&#39;brand&#39;].unique()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;Maruti&#39;, &#39;BMW&#39;, &#39;Tata&#39;, &#39;Toyota&#39;, &#39;Hyundai&#39;, &#39;Chevrolet&#39;, &#39;Honda&#39;,
+       &#39;Jaguar&#39;, &#39;Renault&#39;, &#39;Mahindra&#39;, &#39;Volkswagen&#39;, &#39;Ford&#39;, &#39;Skoda&#39;,
+       &#39;Datsun&#39;, &#39;Fiat&#39;, &#39;Volvo&#39;, &#39;Nissan&#39;, &#39;Mercedes-Benz&#39;, &#39;Kia&#39;,
+       &#39;Jeep&#39;, &#39;Audi&#39;, &#39;Isuzu&#39;, &#39;Lexus&#39;, &#39;Land&#39;, &#39;Force&#39;, &#39;Mitsubishi&#39;,
+       &#39;Ambassador&#39;, &#39;Daewoo&#39;, &#39;MG&#39;, &#39;Ashok&#39;], dtype=object)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df_test[&#39;brand&#39;].unique()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, &#39;Volvo&#39;, &#39;Jaguar&#39;,
+       &#39;Chevrolet&#39;, &#39;Jeep&#39;, &#39;Honda&#39;, &#39;Toyota&#39;, &#39;Kia&#39;, &#39;Ford&#39;, &#39;Lexus&#39;,
+       &#39;Skoda&#39;, &#39;BMW&#39;, &#39;Fiat&#39;, &#39;Renault&#39;, &#39;Nissan&#39;, &#39;Datsun&#39;,
+       &#39;Mercedes-Benz&#39;, &#39;Volkswagen&#39;, &#39;Opel&#39;, &#39;Mitsubishi&#39;, &#39;Ambassador&#39;,
+       &#39;Audi&#39;, &#39;Land&#39;, &#39;Isuzu&#39;, &#39;Force&#39;], dtype=object)
+</pre></div></div>
+</div>
+</section>
+<section id="Criando-a-coluna-idade-do-carro">
+<h2>Criando a coluna idade do carro<a class="headerlink" href="#Criando-a-coluna-idade-do-carro" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Criando a coluna idade do carro
+df1[&#39;age&#39;] = 2021 - df1.year
+
+#para a base de teste
+df_test[&#39;age&#39;] = 2021 - df_test.year
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Retirando-a-coluna-name-e-year">
+<h2>Retirando a coluna name e year<a class="headerlink" href="#Retirando-a-coluna-name-e-year" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>del df1[&quot;name&quot;] #retirando a coluna name
+del df1[&quot;year&quot;] #retirando a coluna year
+del df1[&quot;torque&quot;] #retirando a coluna year ## 0.9705529686331869 (sem torque) gradiente
+#del df1[&quot;seats&quot;] #retirando a coluna year ## 0.9719490890165687 (sem seats e torque) gradiente
+#del df1[&quot;engine&quot;] #retirando a coluna year ### 0.9723490022839645 (sem engine, seats e torque) gradiente
+
+
+del df_test[&quot;name&quot;] #retirando a coluna name
+del df_test[&quot;year&quot;] #retirando a coluna year
+del df_test[&quot;torque&quot;] #retirando a coluna torque
+#del df_test[&quot;seats&quot;] #retirando a coluna year
+#del df_test[&quot;engine&quot;] #retirando a coluna year
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Adequando-o-tipo-de-dado-de-algumas-variáveis">
+<h2>Adequando o tipo de dado de algumas variáveis<a class="headerlink" href="#Adequando-o-tipo-de-dado-de-algumas-variáveis" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>#Mudando o tipo de dado de algumas variáveis
+df1[&#39;mileage&#39;] = pd.to_numeric(df1[&#39;mileage&#39;])
+df1[&#39;max_power&#39;] = pd.to_numeric(df1[&#39;max_power&#39;])
+df1[&#39;engine&#39;] = pd.to_numeric(df1[&#39;engine&#39;])
+df1[&#39;seats&#39;] = pd.to_numeric(df1[&#39;seats&#39;])
+#df1[&#39;torque&#39;] = pd.to_numeric(df1[&#39;torque&#39;])
+
+#Base de Teste
+df_test[&#39;mileage&#39;] = pd.to_numeric(df_test[&#39;mileage&#39;])
+df_test[&#39;max_power&#39;] = pd.to_numeric(df_test[&#39;max_power&#39;])
+df_test[&#39;engine&#39;] = pd.to_numeric(df_test[&#39;engine&#39;])
+df_test[&#39;seats&#39;] = pd.to_numeric(df_test[&#39;seats&#39;])
+#df_test[&#39;torque&#39;] = pd.to_numeric(df_test[&#39;torque&#39;])
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Transformar-as-variaveis-categoricas-para-a-regressão">
+<h1>Transformar as variaveis categoricas para a regressão<a class="headerlink" href="#Transformar-as-variaveis-categoricas-para-a-regressão" title="Permalink to this headline">¶</a></h1>
+<section id="Substituicao-variaveis-categoricas-por-rótulos-numéricos">
+<h2>Substituicao variaveis categoricas por rótulos numéricos<a class="headerlink" href="#Substituicao-variaveis-categoricas-por-rótulos-numéricos" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn import preprocessing
+le = preprocessing.LabelEncoder()
+#base de treino
+for i in range(0, len(df1.columns.values)):
+  if df1.dtypes[i] == &#39;O&#39;:
+    df1.iloc[:, i] = le.fit_transform(df1.iloc[:, i]).astype(&#39;str&#39;)
+
+#Na base de test
+for i in range(0, len(df_test.columns.values)):
+  if df_test.dtypes[i] == &#39;O&#39;:
+    df_test.iloc[:, i] = le.fit_transform(df_test.iloc[:, i]).astype(&#39;str&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1.info()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 5530 entries, 1 to 5688
+Data columns (total 12 columns):
+ #   Column         Non-Null Count  Dtype
+---  ------         --------------  -----
+ 0   selling_price  5530 non-null   int64
+ 1   km_driven      5530 non-null   int64
+ 2   fuel           5530 non-null   object
+ 3   seller_type    5530 non-null   object
+ 4   transmission   5530 non-null   object
+ 5   owner          5530 non-null   object
+ 6   mileage        5530 non-null   float64
+ 7   engine         5530 non-null   int64
+ 8   max_power      5530 non-null   float64
+ 9   seats          5530 non-null   float64
+ 10  brand          5530 non-null   object
+ 11  age            5530 non-null   int64
+dtypes: float64(3), int64(4), object(5)
+memory usage: 561.6+ KB
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1.head(5)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>seats</th>
+      <th>brand</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>459999</td>
+      <td>87000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20.77</td>
+      <td>1248</td>
+      <td>88.76</td>
+      <td>7.0</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19.62</td>
+      <td>1995</td>
+      <td>187.74</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>229999</td>
+      <td>212000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>11.57</td>
+      <td>2179</td>
+      <td>138.10</td>
+      <td>7.0</td>
+      <td>26</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>800000</td>
+      <td>125000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>11.50</td>
+      <td>2982</td>
+      <td>171.00</td>
+      <td>7.0</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180000</td>
+      <td>25000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>19.70</td>
+      <td>796</td>
+      <td>46.30</td>
+      <td>5.0</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Temos agora todas as variaveis numericas para utilizar na nossa regressao</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>plt.figure(figsize=(16, 6))
+# define the mask to set the values in the upper triangle to True
+mask = np.triu(np.ones_like(df1.corr(), dtype=np.bool))
+heatmap = sns.heatmap(df1.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap=&#39;BrBG&#39;)
+heatmap.set_title(&#39;Correlation Heatmap&#39;, fontdict={&#39;fontsize&#39;:18}, pad=16);
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_56_0.png" src="../_images/Jupyter_Car_Price_56_0.png" />
+</div>
+</div>
+<p>Correlacoes muito altas entre variaveis do treino poderiam ser reduntantes, observamos que isso nao ocorre</p>
+</section>
+<section id="Analise-das-variaveis-quantitativas">
+<h2>Analise das variaveis quantitativas<a class="headerlink" href="#Analise-das-variaveis-quantitativas" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>c = [&#39;selling_price&#39;,&#39;km_driven&#39;,&#39;mileage&#39;,&#39;engine&#39;, &#39;max_power&#39;, &#39;seats&#39;, &#39;age&#39;]
+
+for i in c:
+
+  sns.set(style=&quot;ticks&quot;)
+
+  x = df1[i]
+  coluna = i
+  mu = round(x.mean(),2) # mean of distribution
+  sigma = round(x.std(),2)  # standard deviation of distribution
+
+  f, (ax_box, ax_hist) = plt.subplots(2)
+
+  sns.boxplot(x=x, ax=ax_box)
+  sns.histplot(x=x, ax=ax_hist)
+
+  ax_box.set(yticks=[])
+  sns.despine(ax=ax_hist)
+  sns.despine(ax=ax_box, left=True)
+  ax_box.set_title(&#39;Boxplot e Histograma de {}\n $\mu={}$, $\sigma={}$&#39;.format(coluna, mu,sigma))
+
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_0.png" src="../_images/Jupyter_Car_Price_59_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_1.png" src="../_images/Jupyter_Car_Price_59_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_2.png" src="../_images/Jupyter_Car_Price_59_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_3.png" src="../_images/Jupyter_Car_Price_59_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_4.png" src="../_images/Jupyter_Car_Price_59_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_5.png" src="../_images/Jupyter_Car_Price_59_5.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_59_6.png" src="../_images/Jupyter_Car_Price_59_6.png" />
+</div>
+</div>
+<p>Nota se que a variavel que devemos prever, selling price tem uma altissima variancia e quase todas as variaveis quantitativas possuem outliers</p>
+</section>
+</section>
+<section id="Preparacao-dos-dados">
+<h1>Preparacao dos dados<a class="headerlink" href="#Preparacao-dos-dados" title="Permalink to this headline">¶</a></h1>
+<p>antes de fazer a feature selection vamos normalizar e separar o que deve ser predito das variaveis duvida: deve ser normalizado antes da feature selection?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1.head()
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>seats</th>
+      <th>brand</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>459999</td>
+      <td>87000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20.77</td>
+      <td>1248</td>
+      <td>88.76</td>
+      <td>7.0</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19.62</td>
+      <td>1995</td>
+      <td>187.74</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>229999</td>
+      <td>212000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>11.57</td>
+      <td>2179</td>
+      <td>138.10</td>
+      <td>7.0</td>
+      <td>26</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>800000</td>
+      <td>125000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>11.50</td>
+      <td>2982</td>
+      <td>171.00</td>
+      <td>7.0</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180000</td>
+      <td>25000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>19.70</td>
+      <td>796</td>
+      <td>46.30</td>
+      <td>5.0</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>colunas = df1.iloc[:,1:].columns
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>colunas
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;, &#39;transmission&#39;, &#39;owner&#39;, &#39;mileage&#39;,
+       &#39;engine&#39;, &#39;max_power&#39;, &#39;seats&#39;, &#39;brand&#39;, &#39;age&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<section id="Padronizacao">
+<h2>Padronizacao<a class="headerlink" href="#Padronizacao" title="Permalink to this headline">¶</a></h2>
+<p>Vamos padronizar a base a ser predita tbm</p>
+<p>Transformar para formato numpy para nao termos erro na normalizacao</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>data = df1.to_numpy()
+nrow,ncol = df1.shape
+y = data[:,:1]
+X = data[:,1:]
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+
+scaler_train = StandardScaler()
+#scaler_train = MinMaxScaler()
+X = scaler_train.fit_transform(X)
+
+#Padronizando os precos tbm
+#scaler_train = StandardScaler()
+#scaler_train = MinMaxScaler()
+#y = scaler_train.fit_transform(y)
+
+#Vamos padronizar o teste tbm
+scaler_train = StandardScaler()
+#scaler_train = MinMaxScaler()
+df_test1 = scaler_train.fit_transform(df_test)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>print(y.shape)
+print(X.shape)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(5530, 1)
+(5530, 11)
+</pre></div></div>
+</div>
+</section>
+<section id="Separacao-treino-e-teste">
+<h2>Separacao treino e teste<a class="headerlink" href="#Separacao-treino-e-teste" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 4)
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="Catboost">
+<h1>Catboost<a class="headerlink" href="#Catboost" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from catboost import CatBoostRegressor
+from sklearn.model_selection import GridSearchCV
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span> parameters = {&#39;depth&#39;         : [6,8,10],
+                  &#39;learning_rate&#39; : [0.01, 0.05, 0.1],
+                  &#39;iterations&#39;    : [30, 50, 100]
+                 }
+model_CBR = CatBoostRegressor(logging_level=&#39;Silent&#39;)
+
+eval_set=[(X_train, y_train), (X_test, y_test)]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>%%time
+
+grid = GridSearchCV(estimator=model_CBR, param_grid = parameters, cv = 10, n_jobs=-1, scoring=&#39;r2&#39;)
+grid.fit(X_train, y_train, eval_set=eval_set, early_stopping_rounds=10)
+#grid.fit(X_train, y_train)
+
+
+
+print(&quot;Melhor modelo: {}&quot;.format(grid.best_estimator_))
+print(&quot;Melhor score: {}&quot;.format(grid.best_score_))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Melhor modelo: &lt;catboost.core.CatBoostRegressor object at 0x7f99b675db50&gt;
+Melhor score: 0.9645632608480236
+CPU times: user 2.41 s, sys: 213 ms, total: 2.62 s
+Wall time: 1min 56s
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn.metrics import r2_score
+y_predict = grid.predict(X_test)
+
+#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))
+r2 = r2_score(y_test,y_predict)
+print(r2)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.9547105241909506
+</pre></div></div>
+</div>
+</section>
+<section id="Feature-Selection">
+<h1>Feature Selection<a class="headerlink" href="#Feature-Selection" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.analyseup.com/learn-python-for-data-science/python-random-forest-feature-importance-plot.html">https://www.analyseup.com/learn-python-for-data-science/python-random-forest-feature-importance-plot.html</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>def plot_feature_importance(importance,names,model_type):
+
+    #Create arrays from feature importance and feature names
+    feature_importance = np.array(importance)
+    feature_names = np.array(names)
+
+    #Create a DataFrame using a Dictionary
+    data={&#39;feature_names&#39;:feature_names,&#39;feature_importance&#39;:feature_importance}
+    fi_df = pd.DataFrame(data)
+
+    #Sort the DataFrame in order decreasing feature importance
+    fi_df.sort_values(by=[&#39;feature_importance&#39;], ascending=False,inplace=True)
+
+    #Define size of bar plot
+    plt.figure(figsize=(10,8))
+    #Plot Searborn bar chart
+    sns.barplot(x=fi_df[&#39;feature_importance&#39;], y=fi_df[&#39;feature_names&#39;])
+    #Add chart labels
+    plt.title(model_type + &#39;FEATURE IMPORTANCE&#39;)
+    plt.xlabel(&#39;FEATURE IMPORTANCE&#39;)
+    plt.ylabel(&#39;FEATURE NAMES&#39;)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>plot_feature_importance(grid.best_estimator_.get_feature_importance(),colunas,&#39;CATBOOST &#39;)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/Jupyter_Car_Price_82_0.png" src="../_images/Jupyter_Car_Price_82_0.png" />
+</div>
+</div>
+<section id="Vamos-tirar-as-colunas-com-menos-importancia">
+<h2>Vamos tirar as colunas com menos importancia<a class="headerlink" href="#Vamos-tirar-as-colunas-com-menos-importancia" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df1.head()
+c = [&#39;owner&#39;, &#39;seats&#39;, &#39;seller_type&#39;]
+df2 = df1.drop(labels = c, axis = 1)
+
+df_test2 = df_test.drop(labels = c, axis = 1)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>df2
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>transmission</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>brand</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>459999</td>
+      <td>87000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>20.77</td>
+      <td>1248</td>
+      <td>88.76</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>19.62</td>
+      <td>1995</td>
+      <td>187.74</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>229999</td>
+      <td>212000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11.57</td>
+      <td>2179</td>
+      <td>138.10</td>
+      <td>26</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>800000</td>
+      <td>125000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11.50</td>
+      <td>2982</td>
+      <td>171.00</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180000</td>
+      <td>25000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>19.70</td>
+      <td>796</td>
+      <td>46.30</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5684</th>
+      <td>550000</td>
+      <td>20000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>18.90</td>
+      <td>1197</td>
+      <td>82.00</td>
+      <td>11</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5685</th>
+      <td>360000</td>
+      <td>81000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>19.01</td>
+      <td>1461</td>
+      <td>108.45</td>
+      <td>24</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>5686</th>
+      <td>310000</td>
+      <td>70000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>19.30</td>
+      <td>1248</td>
+      <td>73.90</td>
+      <td>20</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5687</th>
+      <td>650000</td>
+      <td>57000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>23.65</td>
+      <td>1248</td>
+      <td>88.50</td>
+      <td>20</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5688</th>
+      <td>420000</td>
+      <td>90000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>24.40</td>
+      <td>1120</td>
+      <td>71.01</td>
+      <td>11</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+<p>5530 rows × 9 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+
+data = df2.to_numpy()
+nrow,ncol = df2.shape
+y = data[:,:1]
+X = data[:,1:]
+
+scaler_train = StandardScaler()
+#scaler_train = MinMaxScaler()
+X = scaler_train.fit_transform(X)
+
+#Vamos padronizar o teste tbm
+scaler_train = StandardScaler()
+#scaler_train = MinMaxScaler()
+df_test2 = scaler_train.fit_transform(df_test2)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 4)
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>parameters = {&#39;depth&#39;         : [6,8,10],
+                  &#39;learning_rate&#39; : [0.01, 0.05, 0.1],
+                  &#39;iterations&#39;    : [30, 50, 100]
+                 }
+model_CBR = CatBoostRegressor()
+
+eval_set=[(X_train, y_train), (X_test, y_test)]
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>%%time
+
+grid = GridSearchCV(estimator=model_CBR, param_grid = parameters, cv = 10, n_jobs=-1, scoring=&#39;r2&#39;)
+grid.fit(X_train, y_train, eval_set=eval_set, early_stopping_rounds=10)
+#grid.fit(X_train, y_train)
+
+y_predict = grid.predict(X_test)
+
+#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))
+#r2 = r2_score(y_test,y_linear_pred)
+
+print(&quot;Melhor modelo: {}&quot;.format(grid.best_estimator_))
+print(&quot;Melhor score: {}&quot;.format(grid.best_score_))
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0:      learn: 725099.3360888   test: 725099.3360888    test1: 725838.2268251   best: 725838.2268251 (0)        total: 5.88ms   remaining: 582ms
+1:      learn: 667962.7502607   test: 667962.7502607    test1: 670005.4649577   best: 670005.4649577 (1)        total: 10.5ms   remaining: 513ms
+2:      learn: 618026.2240742   test: 618026.2240742    test1: 621886.9502452   best: 621886.9502452 (2)        total: 14.7ms   remaining: 477ms
+3:      learn: 570637.0627416   test: 570637.0627416    test1: 578186.2612178   best: 578186.2612178 (3)        total: 19ms     remaining: 456ms
+4:      learn: 527755.3300552   test: 527755.3300552    test1: 536947.9038419   best: 536947.9038419 (4)        total: 23.2ms   remaining: 441ms
+5:      learn: 490277.1990580   test: 490277.1990580    test1: 502595.3096877   best: 502595.3096877 (5)        total: 27.4ms   remaining: 428ms
+6:      learn: 453374.2521619   test: 453374.2521619    test1: 467777.7143207   best: 467777.7143207 (6)        total: 31.6ms   remaining: 420ms
+7:      learn: 420792.5779912   test: 420792.5779912    test1: 437861.6946392   best: 437861.6946392 (7)        total: 35.8ms   remaining: 412ms
+8:      learn: 393043.0440251   test: 393043.0440251    test1: 411090.6830783   best: 411090.6830783 (8)        total: 40.1ms   remaining: 406ms
+9:      learn: 367221.8236830   test: 367221.8236830    test1: 386919.3392056   best: 386919.3392056 (9)        total: 44.2ms   remaining: 398ms
+10:     learn: 343181.0694443   test: 343181.0694443    test1: 364792.0635716   best: 364792.0635716 (10)       total: 48.3ms   remaining: 391ms
+11:     learn: 322896.6381826   test: 322896.6381826    test1: 345040.7307973   best: 345040.7307973 (11)       total: 52.6ms   remaining: 385ms
+12:     learn: 302845.9618204   test: 302845.9618204    test1: 326860.5565415   best: 326860.5565415 (12)       total: 56.7ms   remaining: 380ms
+13:     learn: 286641.4715800   test: 286641.4715800    test1: 312219.6312316   best: 312219.6312316 (13)       total: 60.8ms   remaining: 374ms
+14:     learn: 270952.0744893   test: 270952.0744893    test1: 297170.7323797   best: 297170.7323797 (14)       total: 65ms     remaining: 368ms
+15:     learn: 258475.3925918   test: 258475.3925918    test1: 286340.8212579   best: 286340.8212579 (15)       total: 69.2ms   remaining: 363ms
+16:     learn: 246371.0312132   test: 246371.0312132    test1: 275079.9896599   best: 275079.9896599 (16)       total: 73.4ms   remaining: 359ms
+17:     learn: 233887.0889817   test: 233887.0889817    test1: 264771.1551038   best: 264771.1551038 (17)       total: 77.5ms   remaining: 353ms
+18:     learn: 222216.5469460   test: 222216.5469460    test1: 255136.6229553   best: 255136.6229553 (18)       total: 81.7ms   remaining: 348ms
+19:     learn: 212494.4651008   test: 212494.4651008    test1: 246835.1105830   best: 246835.1105830 (19)       total: 85.7ms   remaining: 343ms
+20:     learn: 204382.3914991   test: 204382.3914991    test1: 240594.7171910   best: 240594.7171910 (20)       total: 89.9ms   remaining: 338ms
+21:     learn: 197076.2687288   test: 197076.2687288    test1: 234047.3517937   best: 234047.3517937 (21)       total: 94ms     remaining: 333ms
+22:     learn: 190717.9316182   test: 190717.9316182    test1: 229118.7773587   best: 229118.7773587 (22)       total: 98.2ms   remaining: 329ms
+23:     learn: 184265.7333922   test: 184265.7333922    test1: 224184.7455733   best: 224184.7455733 (23)       total: 103ms    remaining: 325ms
+24:     learn: 179223.7916875   test: 179223.7916875    test1: 219812.4763748   best: 219812.4763748 (24)       total: 107ms    remaining: 321ms
+25:     learn: 174527.9822117   test: 174527.9822117    test1: 214888.9196695   best: 214888.9196695 (25)       total: 111ms    remaining: 316ms
+26:     learn: 170404.2989815   test: 170404.2989815    test1: 211053.6780763   best: 211053.6780763 (26)       total: 115ms    remaining: 311ms
+27:     learn: 166863.7350093   test: 166863.7350093    test1: 208784.3367464   best: 208784.3367464 (27)       total: 119ms    remaining: 306ms
+28:     learn: 163260.1751759   test: 163260.1751759    test1: 205808.8396433   best: 205808.8396433 (28)       total: 123ms    remaining: 302ms
+29:     learn: 158926.3923587   test: 158926.3923587    test1: 202478.9809685   best: 202478.9809685 (29)       total: 127ms    remaining: 297ms
+30:     learn: 155785.3469715   test: 155785.3469715    test1: 200400.2700177   best: 200400.2700177 (30)       total: 132ms    remaining: 293ms
+31:     learn: 152749.5027848   test: 152749.5027848    test1: 198254.6641147   best: 198254.6641147 (31)       total: 136ms    remaining: 288ms
+32:     learn: 150483.6658493   test: 150483.6658493    test1: 196047.9345613   best: 196047.9345613 (32)       total: 140ms    remaining: 284ms
+33:     learn: 148229.8724341   test: 148229.8724341    test1: 194514.8600443   best: 194514.8600443 (33)       total: 144ms    remaining: 279ms
+34:     learn: 146027.7013355   test: 146027.7013355    test1: 192266.2622987   best: 192266.2622987 (34)       total: 148ms    remaining: 275ms
+35:     learn: 144245.4701191   test: 144245.4701191    test1: 191552.0168309   best: 191552.0168309 (35)       total: 152ms    remaining: 270ms
+36:     learn: 142413.2536117   test: 142413.2536117    test1: 190117.7821396   best: 190117.7821396 (36)       total: 157ms    remaining: 267ms
+37:     learn: 140688.3204281   test: 140688.3204281    test1: 188455.4328949   best: 188455.4328949 (37)       total: 162ms    remaining: 264ms
+38:     learn: 139066.2852420   test: 139066.2852420    test1: 187131.2301431   best: 187131.2301431 (38)       total: 166ms    remaining: 260ms
+39:     learn: 137603.2707736   test: 137603.2707736    test1: 185678.7582810   best: 185678.7582810 (39)       total: 170ms    remaining: 255ms
+40:     learn: 136068.0198434   test: 136068.0198434    test1: 184205.7321537   best: 184205.7321537 (40)       total: 174ms    remaining: 251ms
+41:     learn: 134378.2331538   test: 134378.2331538    test1: 183290.2839965   best: 183290.2839965 (41)       total: 178ms    remaining: 246ms
+42:     learn: 132782.4541325   test: 132782.4541325    test1: 182169.0617821   best: 182169.0617821 (42)       total: 182ms    remaining: 242ms
+43:     learn: 131790.3338328   test: 131790.3338328    test1: 181371.1566799   best: 181371.1566799 (43)       total: 187ms    remaining: 237ms
+44:     learn: 130880.2599549   test: 130880.2599549    test1: 180683.8795768   best: 180683.8795768 (44)       total: 191ms    remaining: 233ms
+45:     learn: 129808.2123748   test: 129808.2123748    test1: 180036.1907090   best: 180036.1907090 (45)       total: 195ms    remaining: 229ms
+46:     learn: 129303.5785381   test: 129303.5785381    test1: 179738.2600447   best: 179738.2600447 (46)       total: 206ms    remaining: 232ms
+47:     learn: 128048.3689670   test: 128048.3689670    test1: 178556.9712466   best: 178556.9712466 (47)       total: 211ms    remaining: 228ms
+48:     learn: 127037.1538879   test: 127037.1538879    test1: 178171.7057705   best: 178171.7057705 (48)       total: 215ms    remaining: 224ms
+49:     learn: 126176.0556530   test: 126176.0556530    test1: 177706.5702217   best: 177706.5702217 (49)       total: 219ms    remaining: 219ms
+50:     learn: 125570.3422714   test: 125570.3422714    test1: 177407.1423650   best: 177407.1423650 (50)       total: 223ms    remaining: 214ms
+51:     learn: 124650.7426271   test: 124650.7426271    test1: 176796.2265874   best: 176796.2265874 (51)       total: 227ms    remaining: 209ms
+52:     learn: 123882.3428112   test: 123882.3428112    test1: 176625.5441358   best: 176625.5441358 (52)       total: 231ms    remaining: 205ms
+53:     learn: 122924.4547779   test: 122924.4547779    test1: 175859.5014073   best: 175859.5014073 (53)       total: 235ms    remaining: 201ms
+54:     learn: 122129.0599356   test: 122129.0599356    test1: 175180.7398020   best: 175180.7398020 (54)       total: 239ms    remaining: 196ms
+55:     learn: 121511.6989019   test: 121511.6989019    test1: 174846.2723380   best: 174846.2723380 (55)       total: 244ms    remaining: 191ms
+56:     learn: 120589.4171994   test: 120589.4171994    test1: 174736.4785205   best: 174736.4785205 (56)       total: 248ms    remaining: 187ms
+57:     learn: 120008.4701474   test: 120008.4701474    test1: 174249.8404187   best: 174249.8404187 (57)       total: 252ms    remaining: 183ms
+58:     learn: 119430.6644494   test: 119430.6644494    test1: 174265.5090162   best: 174249.8404187 (57)       total: 257ms    remaining: 178ms
+59:     learn: 118630.3058181   test: 118630.3058181    test1: 173976.2184429   best: 173976.2184429 (59)       total: 261ms    remaining: 174ms
+60:     learn: 118182.1997115   test: 118182.1997115    test1: 173876.2073501   best: 173876.2073501 (60)       total: 265ms    remaining: 169ms
+61:     learn: 117570.8979635   test: 117570.8979635    test1: 173793.8082586   best: 173793.8082586 (61)       total: 269ms    remaining: 165ms
+62:     learn: 116938.2068202   test: 116938.2068202    test1: 173418.3256343   best: 173418.3256343 (62)       total: 273ms    remaining: 160ms
+63:     learn: 116403.4637366   test: 116403.4637366    test1: 173307.5139834   best: 173307.5139834 (63)       total: 277ms    remaining: 156ms
+64:     learn: 115943.1552822   test: 115943.1552822    test1: 172843.7260659   best: 172843.7260659 (64)       total: 282ms    remaining: 152ms
+65:     learn: 115501.0159642   test: 115501.0159642    test1: 172739.4278919   best: 172739.4278919 (65)       total: 286ms    remaining: 147ms
+66:     learn: 114896.8633806   test: 114896.8633806    test1: 172469.6259225   best: 172469.6259225 (66)       total: 290ms    remaining: 143ms
+67:     learn: 114371.1003208   test: 114371.1003208    test1: 172089.9094769   best: 172089.9094769 (67)       total: 294ms    remaining: 138ms
+68:     learn: 113769.1552686   test: 113769.1552686    test1: 171975.3847819   best: 171975.3847819 (68)       total: 298ms    remaining: 134ms
+69:     learn: 113367.6082125   test: 113367.6082125    test1: 171941.0547624   best: 171941.0547624 (69)       total: 302ms    remaining: 130ms
+70:     learn: 112807.8812827   test: 112807.8812827    test1: 171750.1811411   best: 171750.1811411 (70)       total: 306ms    remaining: 125ms
+71:     learn: 112486.8281573   test: 112486.8281573    test1: 171731.0786620   best: 171731.0786620 (71)       total: 311ms    remaining: 121ms
+72:     learn: 111984.3409624   test: 111984.3409624    test1: 171211.1273708   best: 171211.1273708 (72)       total: 315ms    remaining: 116ms
+73:     learn: 111271.7262892   test: 111271.7262892    test1: 171116.4885800   best: 171116.4885800 (73)       total: 319ms    remaining: 112ms
+74:     learn: 110412.4742720   test: 110412.4742720    test1: 170661.2066491   best: 170661.2066491 (74)       total: 323ms    remaining: 108ms
+75:     learn: 109833.7743343   test: 109833.7743343    test1: 170522.0560090   best: 170522.0560090 (75)       total: 327ms    remaining: 103ms
+76:     learn: 109327.5292193   test: 109327.5292193    test1: 170162.1461219   best: 170162.1461219 (76)       total: 331ms    remaining: 98.9ms
+77:     learn: 108938.8797941   test: 108938.8797941    test1: 170065.9735423   best: 170065.9735423 (77)       total: 335ms    remaining: 94.6ms
+78:     learn: 108377.0521836   test: 108377.0521836    test1: 169758.9858351   best: 169758.9858351 (78)       total: 340ms    remaining: 90.3ms
+79:     learn: 107920.0212175   test: 107920.0212175    test1: 169823.8961036   best: 169758.9858351 (78)       total: 344ms    remaining: 86ms
+80:     learn: 107605.6619060   test: 107605.6619060    test1: 169663.5161577   best: 169663.5161577 (80)       total: 348ms    remaining: 81.6ms
+81:     learn: 107217.1526180   test: 107217.1526180    test1: 169521.3574243   best: 169521.3574243 (81)       total: 352ms    remaining: 77.3ms
+82:     learn: 106703.3143505   test: 106703.3143505    test1: 169183.0635164   best: 169183.0635164 (82)       total: 356ms    remaining: 73ms
+83:     learn: 106394.4399996   test: 106394.4399996    test1: 168881.9310923   best: 168881.9310923 (83)       total: 361ms    remaining: 68.7ms
+84:     learn: 105989.4218876   test: 105989.4218876    test1: 168980.7043083   best: 168881.9310923 (83)       total: 365ms    remaining: 64.4ms
+85:     learn: 105583.7281376   test: 105583.7281376    test1: 168676.7258927   best: 168676.7258927 (85)       total: 369ms    remaining: 60ms
+86:     learn: 104871.9827146   test: 104871.9827146    test1: 168297.8732113   best: 168297.8732113 (86)       total: 373ms    remaining: 55.8ms
+87:     learn: 104424.8228558   test: 104424.8228558    test1: 168045.4120648   best: 168045.4120648 (87)       total: 377ms    remaining: 51.5ms
+88:     learn: 103889.3089230   test: 103889.3089230    test1: 167956.6055735   best: 167956.6055735 (88)       total: 382ms    remaining: 47.2ms
+89:     learn: 103616.4776767   test: 103616.4776767    test1: 167977.5844983   best: 167956.6055735 (88)       total: 386ms    remaining: 42.8ms
+90:     learn: 103253.3979466   test: 103253.3979466    test1: 167773.6376465   best: 167773.6376465 (90)       total: 390ms    remaining: 38.5ms
+91:     learn: 102986.4402999   test: 102986.4402999    test1: 167711.6607700   best: 167711.6607700 (91)       total: 394ms    remaining: 34.3ms
+92:     learn: 102701.8595845   test: 102701.8595845    test1: 167547.6694351   best: 167547.6694351 (92)       total: 398ms    remaining: 29.9ms
+93:     learn: 102343.2845205   test: 102343.2845205    test1: 167279.3629962   best: 167279.3629962 (93)       total: 406ms    remaining: 25.9ms
+94:     learn: 101981.3584052   test: 101981.3584052    test1: 167225.8302052   best: 167225.8302052 (94)       total: 411ms    remaining: 21.6ms
+95:     learn: 101336.8314230   test: 101336.8314230    test1: 166898.4084543   best: 166898.4084543 (95)       total: 415ms    remaining: 17.3ms
+96:     learn: 100996.5880829   test: 100996.5880829    test1: 166986.0832879   best: 166898.4084543 (95)       total: 419ms    remaining: 12.9ms
+97:     learn: 100782.5086486   test: 100782.5086486    test1: 166796.3737366   best: 166796.3737366 (97)       total: 423ms    remaining: 8.63ms
+98:     learn: 100484.1626654   test: 100484.1626654    test1: 166742.1681268   best: 166742.1681268 (98)       total: 427ms    remaining: 4.31ms
+99:     learn: 100220.7995788   test: 100220.7995788    test1: 166791.4282489   best: 166742.1681268 (98)       total: 431ms    remaining: 0us
+
+bestTest = 166742.1681
+bestIteration = 98
+
+Shrink model to first 99 iterations.
+Melhor modelo: &lt;catboost.core.CatBoostRegressor object at 0x7f99ac2e7750&gt;
+Melhor score: 0.9645632608480236
+CPU times: user 2.44 s, sys: 181 ms, total: 2.63 s
+Wall time: 1min 58s
+</pre></div></div>
+</div>
+<p>#Gradient Boosting</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.model_selection import GridSearchCV
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>%%time
+
+parameters = {&#39;max_depth&#39;:[4], &#39;learning_rate&#39;:[0.02],
+             &quot;n_estimators&quot;:[3000], &quot;loss&quot;:[&quot;ls&quot;],
+              &quot;criterion&quot;:[&quot;friedman_mse&quot;]}
+
+grb_model = GridSearchCV(GradientBoostingRegressor(), parameters,
+                    cv = 10, scoring = &quot;r2&quot;, n_jobs = -1, verbose = 3,
+                    refit = True)
+
+grb_model.fit(X_train, y_train.ravel())
+y_pred_train = grb_model.predict(X_train)
+
+
+print(&quot;Melhor modelo: {}&quot;.format(grb_model.best_estimator_))
+print(&quot;Melhor score: {}&quot;.format(grb_model.best_score_))
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Fitting 10 folds for each of 1 candidates, totalling 10 fits
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 2 concurrent workers.
+[Parallel(n_jobs=-1)]: Done  10 out of  10 | elapsed:  1.7min finished
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Melhor modelo: GradientBoostingRegressor(alpha=0.9, ccp_alpha=0.0, criterion=&#39;friedman_mse&#39;,
+                          init=None, learning_rate=0.02, loss=&#39;ls&#39;, max_depth=4,
+                          max_features=None, max_leaf_nodes=None,
+                          min_impurity_decrease=0.0, min_impurity_split=None,
+                          min_samples_leaf=1, min_samples_split=2,
+                          min_weight_fraction_leaf=0.0, n_estimators=3000,
+                          n_iter_no_change=None, presort=&#39;deprecated&#39;,
+                          random_state=None, subsample=1.0, tol=0.0001,
+                          validation_fraction=0.1, verbose=0, warm_start=False)
+Melhor score: 0.97382757528593
+CPU times: user 15.4 s, sys: 61.1 ms, total: 15.5 s
+Wall time: 1min 54s
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Submetendo-a-predicao">
+<h1>Submetendo a predicao<a class="headerlink" href="#Submetendo-a-predicao" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>y_pred = grid.best_estimator_.predict(df_test2)
+y_pred = np.array(y_pred, dtype = int)
+prediction = pd.DataFrame()
+prediction[&#39;Id&#39;] = Id
+prediction[&#39;selling_price&#39;] = y_pred
+
+prediction.to_csv(&#39;catboost2.csv&#39;, index = False)
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>prediction.head(10)
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>selling_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>193067</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>556582</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>616575</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1429865</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>554934</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>457523</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>652911</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>1964215</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>2390847</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>512478</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Matheus de Castro Siniscarchio.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

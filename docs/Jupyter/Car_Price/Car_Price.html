@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Price &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NBA Matches" href="../NBA%20Matches/Final_Games.html" />
+    <link rel="prev" title="Inicio" href="../../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Matheus Siniscarchio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Projetos</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Car Price</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Objetivo">Objetivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Análise-qualitativa-e-quantitativa-dos-dados">Análise qualitativa e quantitativa dos dados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Analise-de-dados-nulos">Analise de dados nulos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Categoria-das-variaveis">Categoria das variaveis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm">Retirando a palavra owner da coluna owner, retirando a unidade de medida de mileage, engine e max power e retirando a segunda unidade de medida utilizada no torque (rpm) e deixando apenas a unidade Nm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Retirando-a-unidade-de-medida-do-torque">Retirando a unidade de medida do torque</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Tratando-a-linha-com-torque-(11.2)-no-treino">Tratando a linha com torque (11.2) no treino</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Tratando-linha-380(38.7)-no-torque-(base-teste)">Tratando linha 380(38.7) no torque (base teste)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Analisando-nome-dos-carros">Analisando nome dos carros</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Feature-engineering">Feature engineering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Criando-a-feature-marca">Criando a feature marca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Criando-a-coluna-idade-do-carro">Criando a coluna idade do carro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Retirando-a-coluna-name-e-year">Retirando a coluna name e year</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Adequando-o-tipo-de-dado-de-algumas-variáveis">Adequando o tipo de dado de algumas variáveis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Transformar-as-variaveis-categoricas-para-a-regressão">Transformar as variaveis categoricas para a regressão</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Substituicao-variaveis-categoricas-por-rótulos-numéricos">Substituicao variaveis categoricas por rótulos numéricos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Analise-das-variaveis-quantitativas">Analise das variaveis quantitativas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Preparacao-dos-dados">Preparacao dos dados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Padronizacao">Padronizacao</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Separacao-treino-e-teste">Separacao treino e teste</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Catboost">Catboost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Feature-Selection">Feature Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Vamos-tirar-as-colunas-com-menos-importancia">Vamos tirar as colunas com menos importancia</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Gradient-Boosting">Gradient Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Submetendo-a-predicao">Submetendo a predicao</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../NBA%20Matches/Final_Games.html">NBA Matches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Sepsis%20Detection/Final_Sepse.html">Sepsis Detection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Estudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../regressao_simples.html">Modelo de regressão linear simples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Matheus Siniscarchio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Car Price</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/Jupyter/Car_Price/Car_Price.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Car-Price">
+<h1>Car Price<a class="headerlink" href="#Car-Price" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_test</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;test_car_details.csv&quot;</span><span class="p">)</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;train_car_details.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;selling_price&#39;, &#39;km_driven&#39;, &#39;fuel&#39;,
+       &#39;seller_type&#39;, &#39;transmission&#39;, &#39;owner&#39;, &#39;mileage&#39;, &#39;engine&#39;,
+       &#39;max_power&#39;, &#39;torque&#39;, &#39;seats&#39;],
+      dtype=&#39;object&#39;)
+Index([&#39;Id&#39;, &#39;name&#39;, &#39;year&#39;, &#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;,
+       &#39;transmission&#39;, &#39;owner&#39;, &#39;mileage&#39;, &#39;engine&#39;, &#39;max_power&#39;, &#39;torque&#39;,
+       &#39;seats&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="section" id="Objetivo">
+<h2>Objetivo<a class="headerlink" href="#Objetivo" title="Permalink to this headline">¶</a></h2>
+<p>Um dos problemas que ocorrem na OLX da Índia, pela baixa volumetria de dados, é a empresa não conseguir estimar um preço de venda para o carro do seu cliente baseado em algumas características do veículo. O objetivo é estimar tal valor a partir de dados do concorrente (CarDekho).</p>
+</div>
+<div class="section" id="Análise-qualitativa-e-quantitativa-dos-dados">
+<h2>Análise qualitativa e quantitativa dos dados<a class="headerlink" href="#Análise-qualitativa-e-quantitativa-dos-dados" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Verificando as variáveis</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>name</th>
+      <th>year</th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Hyundai Santro GLS I - Euro I</td>
+      <td>1999</td>
+      <td>80000</td>
+      <td>110000</td>
+      <td>Petrol</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Second Owner</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Maruti Ertiga VDI</td>
+      <td>2012</td>
+      <td>459999</td>
+      <td>87000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>First Owner</td>
+      <td>20.77 kmpl</td>
+      <td>1248 CC</td>
+      <td>88.76 bhp</td>
+      <td>200Nm@ 1750rpm</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>BMW 3 Series 320d Luxury Line</td>
+      <td>2010</td>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>Diesel</td>
+      <td>Dealer</td>
+      <td>Automatic</td>
+      <td>First Owner</td>
+      <td>19.62 kmpl</td>
+      <td>1995 CC</td>
+      <td>187.74 bhp</td>
+      <td>400Nm@ 1750-2500rpm</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Tata New Safari DICOR 2.2 EX 4x2</td>
+      <td>2009</td>
+      <td>229999</td>
+      <td>212000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Third Owner</td>
+      <td>11.57 kmpl</td>
+      <td>2179 CC</td>
+      <td>138.1 bhp</td>
+      <td>320Nm@ 1700-2700rpm</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Toyota Fortuner 3.0 Diesel</td>
+      <td>2010</td>
+      <td>800000</td>
+      <td>125000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Second Owner</td>
+      <td>11.5 kmpl</td>
+      <td>2982 CC</td>
+      <td>171 bhp</td>
+      <td>343Nm@ 1400-3400rpm</td>
+      <td>7.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#retirando a coluna de id</span>
+
+<span class="n">Id</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">Id</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span> <span class="c1">#retirando a coluna de id</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Analise-de-dados-nulos">
+<h3>Analise de dados nulos<a class="headerlink" href="#Analise-de-dados-nulos" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Verificado a quantidade de NaN por atributo</span>
+<span class="n">df_train</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name               0
+year               0
+selling_price      0
+km_driven          0
+fuel               0
+seller_type        0
+transmission       0
+owner              0
+mileage          157
+engine           157
+max_power        151
+torque           158
+seats            157
+dtype: int64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Porcentagem de nan por atributo</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">df_train</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df_train</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name             0.000000
+year             0.000000
+selling_price    0.000000
+km_driven        0.000000
+fuel             0.000000
+seller_type      0.000000
+transmission     0.000000
+owner            0.000000
+mileage          2.759712
+engine           2.759712
+max_power        2.654245
+torque           2.777290
+seats            2.759712
+dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Porcentagem de nan por atributo no test</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">df_test</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+name            0.0
+year            0.0
+km_driven       0.0
+fuel            0.0
+seller_type     0.0
+transmission    0.0
+owner           0.0
+mileage         0.0
+engine          0.0
+max_power       0.0
+torque          0.0
+seats           0.0
+dtype: float64
+</pre></div></div>
+</div>
+<p>Pelo fatos dos NaN’s estar majoritariamente presente nas mesmas linhas e por representar um baixo volume em relação ao total (menos de 3%), tais linhas serão retiradas.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Quantidade de linhas totais: &#39;</span><span class="p">,</span> <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Remove as linhas com NaN</span>
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Quantidade de linhas após retirada dos NaNs: &#39;</span><span class="p">,</span> <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1">#Aproximadamente 3% de linhas eliminadas</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Quantidade de linhas totais:  5689
+Quantidade de linhas após retirada dos NaNs:  5531
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Categoria-das-variaveis">
+<h3>Categoria das variaveis<a class="headerlink" href="#Categoria-das-variaveis" title="Permalink to this headline">¶</a></h3>
+<p>Os dados são compostos pelas variáveis:</p>
+<ul class="simple">
+<li><p>Variaveis quantitativas discreta:</p></li>
+<li><p>Ano de fabricacao do carro (year)</p></li>
+<li><p>Qtd de Km dirigidos (km_driven)</p></li>
+<li><p>Potência máxima do motor (max_power)</p></li>
+<li><p>Qtd de acentos (seats)</p></li>
+<li><p>Variaveis quantitativas continuas:</p></li>
+<li><p>Quilometragem por litro (mileage)</p></li>
+<li><p>Potencia do motor (engine)</p></li>
+<li><p>Preço de venda (selling_price) <strong>Valor a ser predito</strong></p></li>
+<li><p>Variaveis qualitativas nominais:</p></li>
+<li><p>nome do carro (name)</p></li>
+<li><p>tipo de combustivel utilizado (fuel)</p></li>
+<li><p>tipo de vendendor (seller_type)</p></li>
+<li><p>transmissao (transmission)</p></li>
+<li><p>Torque: responsável pela capacidade do motor produzir força motriz, ou seja, o movimento giratório</p></li>
+<li><p>Variaveis qualitativas ordinais:</p></li>
+<li><p>Quantos donos ja possuiram o carro (owner)</p></li>
+</ul>
+<p>Nota-se que 4 variáveis são numéricas, mas é necessário uma tratativa para retirar as strings que representam a unidade de medida. Ao todo, considerando as variáveis que precisam ser tratadas, há 7 variáveis numéricas e 6 variáveis categóricas qualitativas.</p>
+</div>
+<div class="section" id="Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm">
+<h3>Retirando a palavra owner da coluna owner, retirando a unidade de medida de mileage, engine e max power e retirando a segunda unidade de medida utilizada no torque (rpm) e deixando apenas a unidade Nm<a class="headerlink" href="#Retirando-a-palavra-owner-da-coluna-owner,-retirando-a-unidade-de-medida-de-mileage,-engine-e-max-power-e-retirando-a-segunda-unidade-de-medida-utilizada-no-torque-(rpm)-e-deixando-apenas-a-unidade-Nm" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">colunas</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;mileage&#39;</span><span class="p">,</span> <span class="s1">&#39;engine&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;max_power&#39;</span><span class="p">,</span> <span class="s1">&#39;torque&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#base de treino</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colunas</span><span class="p">:</span>
+  <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1">#Na base de test</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">colunas</span><span class="p">:</span>
+  <span class="n">df_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Retirando-a-unidade-de-medida-do-torque">
+<h3>Retirando a unidade de medida do torque<a class="headerlink" href="#Retirando-a-unidade-de-medida-do-torque" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Retirando a unidade de medida do torque</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NM&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;kgm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#no test</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;nm@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Nm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;NM&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;kgm&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;110(11.2)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1954</th>
+      <td>Honda Jazz Select Edition Active</td>
+      <td>2011</td>
+      <td>350000</td>
+      <td>80000</td>
+      <td>Petrol</td>
+      <td>Individual</td>
+      <td>Manual</td>
+      <td>Second</td>
+      <td>16.0</td>
+      <td>1198</td>
+      <td>90</td>
+      <td>110(11.2)</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Nao temos esse problema na base de teste</p>
+<div class="section" id="Tratando-a-linha-com-torque-(11.2)-no-treino">
+<h4>Tratando a linha com torque (11.2) no treino<a class="headerlink" href="#Tratando-a-linha-com-torque-(11.2)-no-treino" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#eliminando a linha com toque = 110(11.2)</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;110(11.2)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Tratando-linha-380(38.7)-no-torque-(base-teste)">
+<h4>Tratando linha 380(38.7) no torque (base teste)<a class="headerlink" href="#Tratando-linha-380(38.7)-no-torque-(base-teste)" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;380(38.7)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>885</th>
+      <td>Ford Endeavour Hurricane Limited Edition</td>
+      <td>2013</td>
+      <td>110000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Automatic</td>
+      <td>Third</td>
+      <td>12.8</td>
+      <td>2953</td>
+      <td>156</td>
+      <td>380(38.7)</td>
+      <td>7.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Nao podemos eliminar linhas da base de teste</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;380(38.7)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>885</th>
+      <td>Ford Endeavour Hurricane Limited Edition</td>
+      <td>2013</td>
+      <td>110000</td>
+      <td>Diesel</td>
+      <td>Individual</td>
+      <td>Automatic</td>
+      <td>Third</td>
+      <td>12.8</td>
+      <td>2953</td>
+      <td>156</td>
+      <td>380(38.7)</td>
+      <td>7.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_test</span><span class="o">.</span><span class="n">torque</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;380(38.7)&#39;</span><span class="p">,</span> <span class="s1">&#39;380&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;torque&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;380(38.7)&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>year</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>torque</th>
+      <th>seats</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Analisando-nome-dos-carros">
+<h4>Analisando nome dos carros<a class="headerlink" href="#Analisando-nome-dos-carros" title="Permalink to this headline">¶</a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Colocando a marca e modelo do carro em um dicionario juntamente com sua frequência no conjunto</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="n">agrupamento</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+<span class="n">counter</span><span class="o">=</span><span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">agrupamento</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Colocando a frequencia em uma lista para poder contar a qtd de itens diferentes</span>
+<span class="n">contador</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="n">counter</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="n">contador</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">counter</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quantidade de modelos de carros distintos: &quot;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">contador</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A maior quantidade de um único modelo de carro: &quot;</span><span class="p">,</span><span class="nb">max</span><span class="p">(</span><span class="n">contador</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Quantidade de modelos de carros distintos:  1706
+A maior quantidade de um único modelo de carro:  92
+</pre></div></div>
+</div>
+<p>Como o nome dos carros é muito variado, não é interessante estar presente no modelo, porém, a informação da marca do carro pode ser importante, assim como outras informações oriundas da própria base.</p>
+</div>
+</div>
+</div>
+<div class="section" id="Feature-engineering">
+<h2>Feature engineering<a class="headerlink" href="#Feature-engineering" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Criando-a-feature-marca">
+<h3>Criando a feature marca<a class="headerlink" href="#Criando-a-feature-marca" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Criando a coluna marca</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1">#para a base de teste</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;Maruti&#39;, &#39;BMW&#39;, &#39;Tata&#39;, &#39;Toyota&#39;, &#39;Hyundai&#39;, &#39;Chevrolet&#39;, &#39;Honda&#39;,
+       &#39;Jaguar&#39;, &#39;Renault&#39;, &#39;Mahindra&#39;, &#39;Volkswagen&#39;, &#39;Ford&#39;, &#39;Skoda&#39;,
+       &#39;Datsun&#39;, &#39;Fiat&#39;, &#39;Volvo&#39;, &#39;Nissan&#39;, &#39;Mercedes-Benz&#39;, &#39;Kia&#39;,
+       &#39;Jeep&#39;, &#39;Audi&#39;, &#39;Isuzu&#39;, &#39;Lexus&#39;, &#39;Land&#39;, &#39;Force&#39;, &#39;Mitsubishi&#39;,
+       &#39;Ambassador&#39;, &#39;Daewoo&#39;, &#39;MG&#39;, &#39;Ashok&#39;], dtype=object)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;brand&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;Tata&#39;, &#39;Maruti&#39;, &#39;Mahindra&#39;, &#39;Hyundai&#39;, &#39;Volvo&#39;, &#39;Jaguar&#39;,
+       &#39;Chevrolet&#39;, &#39;Jeep&#39;, &#39;Honda&#39;, &#39;Toyota&#39;, &#39;Kia&#39;, &#39;Ford&#39;, &#39;Lexus&#39;,
+       &#39;Skoda&#39;, &#39;BMW&#39;, &#39;Fiat&#39;, &#39;Renault&#39;, &#39;Nissan&#39;, &#39;Datsun&#39;,
+       &#39;Mercedes-Benz&#39;, &#39;Volkswagen&#39;, &#39;Opel&#39;, &#39;Mitsubishi&#39;, &#39;Ambassador&#39;,
+       &#39;Audi&#39;, &#39;Land&#39;, &#39;Isuzu&#39;, &#39;Force&#39;], dtype=object)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Criando-a-coluna-idade-do-carro">
+<h3>Criando a coluna idade do carro<a class="headerlink" href="#Criando-a-coluna-idade-do-carro" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Criando a coluna idade do carro</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2021</span> <span class="o">-</span> <span class="n">df1</span><span class="o">.</span><span class="n">year</span>
+
+<span class="c1">#para a base de teste</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2021</span> <span class="o">-</span> <span class="n">df_test</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Retirando-a-coluna-name-e-year">
+<h3>Retirando a coluna name e year<a class="headerlink" href="#Retirando-a-coluna-name-e-year" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">del</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna name</span>
+<span class="k">del</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna year</span>
+<span class="k">del</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;torque&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna year ## 0.9705529686331869 (sem torque) gradiente</span>
+<span class="c1">#del df1[&quot;seats&quot;] #retirando a coluna year ## 0.9719490890165687 (sem seats e torque) gradiente</span>
+<span class="c1">#del df1[&quot;engine&quot;] #retirando a coluna year ### 0.9723490022839645 (sem engine, seats e torque) gradiente</span>
+
+
+<span class="k">del</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna name</span>
+<span class="k">del</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna year</span>
+<span class="k">del</span> <span class="n">df_test</span><span class="p">[</span><span class="s2">&quot;torque&quot;</span><span class="p">]</span> <span class="c1">#retirando a coluna torque</span>
+<span class="c1">#del df_test[&quot;seats&quot;] #retirando a coluna year</span>
+<span class="c1">#del df_test[&quot;engine&quot;] #retirando a coluna year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Adequando-o-tipo-de-dado-de-algumas-variáveis">
+<h3>Adequando o tipo de dado de algumas variáveis<a class="headerlink" href="#Adequando-o-tipo-de-dado-de-algumas-variáveis" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Mudando o tipo de dado de algumas variáveis</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">])</span>
+<span class="n">df1</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">])</span>
+<span class="c1">#df1[&#39;torque&#39;] = pd.to_numeric(df1[&#39;torque&#39;])</span>
+
+<span class="c1">#Base de Teste</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;mileage&#39;</span><span class="p">])</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;max_power&#39;</span><span class="p">])</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;engine&#39;</span><span class="p">])</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">])</span>
+<span class="c1">#df_test[&#39;torque&#39;] = pd.to_numeric(df_test[&#39;torque&#39;])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Transformar-as-variaveis-categoricas-para-a-regressão">
+<h2>Transformar as variaveis categoricas para a regressão<a class="headerlink" href="#Transformar-as-variaveis-categoricas-para-a-regressão" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Substituicao-variaveis-categoricas-por-rótulos-numéricos">
+<h3>Substituicao variaveis categoricas por rótulos numéricos<a class="headerlink" href="#Substituicao-variaveis-categoricas-por-rótulos-numéricos" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="c1">#base de treino</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)):</span>
+  <span class="k">if</span> <span class="n">df1</span><span class="o">.</span><span class="n">dtypes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span>
+    <span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
+
+<span class="c1">#Na base de test</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">)):</span>
+  <span class="k">if</span> <span class="n">df_test</span><span class="o">.</span><span class="n">dtypes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;O&#39;</span><span class="p">:</span>
+    <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 5530 entries, 1 to 5688
+Data columns (total 12 columns):
+ #   Column         Non-Null Count  Dtype
+---  ------         --------------  -----
+ 0   selling_price  5530 non-null   int64
+ 1   km_driven      5530 non-null   int64
+ 2   fuel           5530 non-null   object
+ 3   seller_type    5530 non-null   object
+ 4   transmission   5530 non-null   object
+ 5   owner          5530 non-null   object
+ 6   mileage        5530 non-null   float64
+ 7   engine         5530 non-null   int64
+ 8   max_power      5530 non-null   float64
+ 9   seats          5530 non-null   float64
+ 10  brand          5530 non-null   object
+ 11  age            5530 non-null   int64
+dtypes: float64(3), int64(4), object(5)
+memory usage: 561.6+ KB
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>seats</th>
+      <th>brand</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>459999</td>
+      <td>87000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20.77</td>
+      <td>1248</td>
+      <td>88.76</td>
+      <td>7.0</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19.62</td>
+      <td>1995</td>
+      <td>187.74</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>229999</td>
+      <td>212000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>11.57</td>
+      <td>2179</td>
+      <td>138.10</td>
+      <td>7.0</td>
+      <td>26</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>800000</td>
+      <td>125000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>11.50</td>
+      <td>2982</td>
+      <td>171.00</td>
+      <td>7.0</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180000</td>
+      <td>25000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>19.70</td>
+      <td>796</td>
+      <td>46.30</td>
+      <td>5.0</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Temos agora todas as variaveis numericas para utilizar na nossa regressao</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># define the mask to set the values in the upper triangle to True</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
+<span class="n">heatmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BrBG&#39;</span><span class="p">)</span>
+<span class="n">heatmap</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Correlation Heatmap&#39;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">},</span> <span class="n">pad</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_55_0.png" src="../../_images/Jupyter_Car_Price_Car_Price_55_0.png" />
+</div>
+</div>
+<p>Correlacoes muito altas entre variaveis do treino poderiam ser reduntantes, observamos que isso nao ocorre</p>
+</div>
+<div class="section" id="Analise-das-variaveis-quantitativas">
+<h3>Analise das variaveis quantitativas<a class="headerlink" href="#Analise-das-variaveis-quantitativas" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;selling_price&#39;</span><span class="p">,</span><span class="s1">&#39;km_driven&#39;</span><span class="p">,</span><span class="s1">&#39;mileage&#39;</span><span class="p">,</span><span class="s1">&#39;engine&#39;</span><span class="p">,</span> <span class="s1">&#39;max_power&#39;</span><span class="p">,</span> <span class="s1">&#39;seats&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">c</span><span class="p">:</span>
+
+  <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;ticks&quot;</span><span class="p">)</span>
+
+  <span class="n">x</span> <span class="o">=</span> <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="n">coluna</span> <span class="o">=</span> <span class="n">i</span>
+  <span class="n">mu</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># mean of distribution</span>
+  <span class="n">sigma</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># standard deviation of distribution</span>
+
+  <span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_box</span><span class="p">,</span> <span class="n">ax_hist</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+  <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_box</span><span class="p">)</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">)</span>
+
+  <span class="n">ax_box</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">)</span>
+  <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax_box</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">ax_box</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Boxplot e Histograma de </span><span class="si">{}</span><span class="se">\n</span><span class="s1"> $\mu=</span><span class="si">{}</span><span class="s1">$, $\sigma=</span><span class="si">{}</span><span class="s1">$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">coluna</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span><span class="n">sigma</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_0.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_1.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_2.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_3.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_4.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_5.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_5.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_58_6.png" src="../../_images/Jupyter_Car_Price_Car_Price_58_6.png" />
+</div>
+</div>
+<p>Nota se que a variavel que devemos prever, selling price tem uma altissima variancia e quase todas as variaveis quantitativas possuem outliers</p>
+</div>
+</div>
+<div class="section" id="Preparacao-dos-dados">
+<h2>Preparacao dos dados<a class="headerlink" href="#Preparacao-dos-dados" title="Permalink to this headline">¶</a></h2>
+<p>antes de fazer a feature selection vamos normalizar e separar o que deve ser predito das variaveis duvida: deve ser normalizado antes da feature selection?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>seller_type</th>
+      <th>transmission</th>
+      <th>owner</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>seats</th>
+      <th>brand</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>459999</td>
+      <td>87000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20.77</td>
+      <td>1248</td>
+      <td>88.76</td>
+      <td>7.0</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19.62</td>
+      <td>1995</td>
+      <td>187.74</td>
+      <td>5.0</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>229999</td>
+      <td>212000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>11.57</td>
+      <td>2179</td>
+      <td>138.10</td>
+      <td>7.0</td>
+      <td>26</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>800000</td>
+      <td>125000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>11.50</td>
+      <td>2982</td>
+      <td>171.00</td>
+      <td>7.0</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180000</td>
+      <td>25000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>19.70</td>
+      <td>796</td>
+      <td>46.30</td>
+      <td>5.0</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">colunas</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">colunas</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;km_driven&#39;, &#39;fuel&#39;, &#39;seller_type&#39;, &#39;transmission&#39;, &#39;owner&#39;, &#39;mileage&#39;,
+       &#39;engine&#39;, &#39;max_power&#39;, &#39;seats&#39;, &#39;brand&#39;, &#39;age&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="section" id="Padronizacao">
+<h3>Padronizacao<a class="headerlink" href="#Padronizacao" title="Permalink to this headline">¶</a></h3>
+<p>Vamos padronizar a base a ser predita tbm</p>
+<p>Transformar para formato numpy para nao termos erro na normalizacao</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">nrow</span><span class="p">,</span><span class="n">ncol</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1">#Padronizando os precos tbm</span>
+<span class="c1">#scaler_train = StandardScaler()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="c1">#y = scaler_train.fit_transform(y)</span>
+
+<span class="c1">#Vamos padronizar o teste tbm</span>
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">df_test1</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(5530, 1)
+(5530, 11)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Separacao-treino-e-teste">
+<h3>Separacao treino e teste<a class="headerlink" href="#Separacao-treino-e-teste" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Catboost">
+<h2>Catboost<a class="headerlink" href="#Catboost" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">catboost</span> <span class="kn">import</span> <span class="n">CatBoostRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;depth&#39;</span>         <span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+                  <span class="s1">&#39;learning_rate&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                  <span class="s1">&#39;iterations&#39;</span>    <span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+                 <span class="p">}</span>
+<span class="n">model_CBR</span> <span class="o">=</span> <span class="n">CatBoostRegressor</span><span class="p">(</span><span class="n">logging_level</span><span class="o">=</span><span class="s1">&#39;Silent&#39;</span><span class="p">)</span>
+
+<span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model_CBR</span><span class="p">,</span> <span class="n">param_grid</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#grid.fit(X_train, y_train)</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor modelo: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Melhor modelo: &lt;catboost.core.CatBoostRegressor object at 0x0000021C7A608F10&gt;
+Melhor score: 0.9636405747742944
+Wall time: 4min
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1">#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_predict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.9525834925856915
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Feature-Selection">
+<h2>Feature Selection<a class="headerlink" href="#Feature-Selection" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.analyseup.com/learn-python-for-data-science/python-random-forest-feature-importance-plot.html">https://www.analyseup.com/learn-python-for-data-science/python-random-forest-feature-importance-plot.html</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">plot_feature_importance</span><span class="p">(</span><span class="n">importance</span><span class="p">,</span><span class="n">names</span><span class="p">,</span><span class="n">model_type</span><span class="p">):</span>
+
+    <span class="c1">#Create arrays from feature importance and feature names</span>
+    <span class="n">feature_importance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">importance</span><span class="p">)</span>
+    <span class="n">feature_names</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+
+    <span class="c1">#Create a DataFrame using a Dictionary</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;feature_names&#39;</span><span class="p">:</span><span class="n">feature_names</span><span class="p">,</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">:</span><span class="n">feature_importance</span><span class="p">}</span>
+    <span class="n">fi_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1">#Sort the DataFrame in order decreasing feature importance</span>
+    <span class="n">fi_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#Define size of bar plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="c1">#Plot Searborn bar chart</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">fi_df</span><span class="p">[</span><span class="s1">&#39;feature_importance&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">fi_df</span><span class="p">[</span><span class="s1">&#39;feature_names&#39;</span><span class="p">])</span>
+    <span class="c1">#Add chart labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">model_type</span> <span class="o">+</span> <span class="s1">&#39;FEATURE IMPORTANCE&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;FEATURE IMPORTANCE&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;FEATURE NAMES&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plot_feature_importance</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_feature_importance</span><span class="p">(),</span><span class="n">colunas</span><span class="p">,</span><span class="s1">&#39;CATBOOST &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Car_Price_Car_Price_81_0.png" src="../../_images/Jupyter_Car_Price_Car_Price_81_0.png" />
+</div>
+</div>
+<div class="section" id="Vamos-tirar-as-colunas-com-menos-importancia">
+<h3>Vamos tirar as colunas com menos importancia<a class="headerlink" href="#Vamos-tirar-as-colunas-com-menos-importancia" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="s1">&#39;seats&#39;</span><span class="p">,</span> <span class="s1">&#39;seller_type&#39;</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df_test2</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>selling_price</th>
+      <th>km_driven</th>
+      <th>fuel</th>
+      <th>transmission</th>
+      <th>mileage</th>
+      <th>engine</th>
+      <th>max_power</th>
+      <th>brand</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>459999</td>
+      <td>87000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>20.77</td>
+      <td>1248</td>
+      <td>88.76</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1100000</td>
+      <td>102000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>19.62</td>
+      <td>1995</td>
+      <td>187.74</td>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>229999</td>
+      <td>212000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11.57</td>
+      <td>2179</td>
+      <td>138.10</td>
+      <td>26</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>800000</td>
+      <td>125000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11.50</td>
+      <td>2982</td>
+      <td>171.00</td>
+      <td>27</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>180000</td>
+      <td>25000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>19.70</td>
+      <td>796</td>
+      <td>46.30</td>
+      <td>20</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5684</th>
+      <td>550000</td>
+      <td>20000</td>
+      <td>3</td>
+      <td>1</td>
+      <td>18.90</td>
+      <td>1197</td>
+      <td>82.00</td>
+      <td>11</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5685</th>
+      <td>360000</td>
+      <td>81000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>19.01</td>
+      <td>1461</td>
+      <td>108.45</td>
+      <td>24</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>5686</th>
+      <td>310000</td>
+      <td>70000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>19.30</td>
+      <td>1248</td>
+      <td>73.90</td>
+      <td>20</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5687</th>
+      <td>650000</td>
+      <td>57000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>23.65</td>
+      <td>1248</td>
+      <td>88.50</td>
+      <td>20</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5688</th>
+      <td>420000</td>
+      <td>90000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>24.40</td>
+      <td>1120</td>
+      <td>71.01</td>
+      <td>11</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+<p>5530 rows × 9 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">nrow</span><span class="p">,</span><span class="n">ncol</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1">#Vamos padronizar o teste tbm</span>
+<span class="n">scaler_train</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1">#scaler_train = MinMaxScaler()</span>
+<span class="n">df_test2</span> <span class="o">=</span> <span class="n">scaler_train</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_test2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;depth&#39;</span>         <span class="p">:</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+                  <span class="s1">&#39;learning_rate&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>
+                  <span class="s1">&#39;iterations&#39;</span>    <span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+                 <span class="p">}</span>
+<span class="n">model_CBR</span> <span class="o">=</span> <span class="n">CatBoostRegressor</span><span class="p">()</span>
+
+<span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">model_CBR</span><span class="p">,</span> <span class="n">param_grid</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">eval_set</span><span class="p">,</span> <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1">#grid.fit(X_train, y_train)</span>
+
+<span class="n">y_predict</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1">#rmse = np.sqrt(mean_squared_error(y_test,y_linear_pred))</span>
+<span class="c1">#r2 = r2_score(y_test,y_linear_pred)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor modelo: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0:      learn: 725099.3360888   test: 725099.3360888    test1: 725838.2268251   best: 725838.2268251 (0)        total: 41.3ms   remaining: 4.09s
+1:      learn: 667962.7502607   test: 667962.7502607    test1: 670005.4649577   best: 670005.4649577 (1)        total: 47.4ms   remaining: 2.32s
+2:      learn: 618026.2240742   test: 618026.2240742    test1: 621886.9502452   best: 621886.9502452 (2)        total: 54.6ms   remaining: 1.76s
+3:      learn: 570637.0627416   test: 570637.0627416    test1: 578186.2612178   best: 578186.2612178 (3)        total: 60.7ms   remaining: 1.46s
+4:      learn: 527755.3300552   test: 527755.3300552    test1: 536947.9038419   best: 536947.9038419 (4)        total: 67.1ms   remaining: 1.27s
+5:      learn: 490277.1990580   test: 490277.1990580    test1: 502595.3096877   best: 502595.3096877 (5)        total: 73.5ms   remaining: 1.15s
+6:      learn: 453374.2521619   test: 453374.2521619    test1: 467777.7143207   best: 467777.7143207 (6)        total: 80.3ms   remaining: 1.07s
+7:      learn: 420792.5779912   test: 420792.5779912    test1: 437861.6946392   best: 437861.6946392 (7)        total: 90.2ms   remaining: 1.04s
+8:      learn: 393043.0440251   test: 393043.0440251    test1: 411090.6830783   best: 411090.6830783 (8)        total: 97.3ms   remaining: 984ms
+9:      learn: 367221.8236830   test: 367221.8236830    test1: 386919.3392056   best: 386919.3392056 (9)        total: 107ms    remaining: 966ms
+10:     learn: 343181.0694443   test: 343181.0694443    test1: 364792.0635716   best: 364792.0635716 (10)       total: 118ms    remaining: 957ms
+11:     learn: 322896.6381826   test: 322896.6381826    test1: 345040.7307973   best: 345040.7307973 (11)       total: 125ms    remaining: 916ms
+12:     learn: 302845.9618204   test: 302845.9618204    test1: 326860.5565415   best: 326860.5565415 (12)       total: 135ms    remaining: 902ms
+13:     learn: 286641.4715800   test: 286641.4715800    test1: 312219.6312316   best: 312219.6312316 (13)       total: 143ms    remaining: 879ms
+14:     learn: 270952.0744893   test: 270952.0744893    test1: 297170.7323797   best: 297170.7323797 (14)       total: 153ms    remaining: 869ms
+15:     learn: 258475.3925918   test: 258475.3925918    test1: 286340.8212579   best: 286340.8212579 (15)       total: 164ms    remaining: 863ms
+16:     learn: 246371.0312132   test: 246371.0312132    test1: 275079.9896599   best: 275079.9896599 (16)       total: 172ms    remaining: 840ms
+17:     learn: 233887.0889817   test: 233887.0889817    test1: 264771.1551038   best: 264771.1551038 (17)       total: 183ms    remaining: 832ms
+18:     learn: 222216.5469460   test: 222216.5469460    test1: 255136.6229553   best: 255136.6229553 (18)       total: 189ms    remaining: 807ms
+19:     learn: 212494.4651008   test: 212494.4651008    test1: 246835.1105830   best: 246835.1105830 (19)       total: 198ms    remaining: 793ms
+20:     learn: 204382.3914991   test: 204382.3914991    test1: 240594.7171910   best: 240594.7171910 (20)       total: 206ms    remaining: 775ms
+21:     learn: 197076.2687288   test: 197076.2687288    test1: 234047.3517937   best: 234047.3517937 (21)       total: 214ms    remaining: 759ms
+22:     learn: 190717.9316182   test: 190717.9316182    test1: 229118.7773587   best: 229118.7773587 (22)       total: 224ms    remaining: 750ms
+23:     learn: 184265.7333922   test: 184265.7333922    test1: 224184.7455733   best: 224184.7455733 (23)       total: 233ms    remaining: 738ms
+24:     learn: 179223.7916875   test: 179223.7916875    test1: 219812.4763748   best: 219812.4763748 (24)       total: 240ms    remaining: 719ms
+25:     learn: 174527.9822117   test: 174527.9822117    test1: 214888.9196695   best: 214888.9196695 (25)       total: 247ms    remaining: 704ms
+26:     learn: 170404.2989815   test: 170404.2989815    test1: 211053.6780763   best: 211053.6780763 (26)       total: 254ms    remaining: 687ms
+27:     learn: 166863.7350093   test: 166863.7350093    test1: 208784.3367464   best: 208784.3367464 (27)       total: 261ms    remaining: 672ms
+28:     learn: 163260.1751759   test: 163260.1751759    test1: 205808.8396433   best: 205808.8396433 (28)       total: 270ms    remaining: 661ms
+29:     learn: 158926.3923587   test: 158926.3923587    test1: 202478.9809685   best: 202478.9809685 (29)       total: 277ms    remaining: 647ms
+30:     learn: 155785.3469715   test: 155785.3469715    test1: 200400.2700177   best: 200400.2700177 (30)       total: 285ms    remaining: 635ms
+31:     learn: 152749.5027848   test: 152749.5027848    test1: 198254.6641147   best: 198254.6641147 (31)       total: 293ms    remaining: 623ms
+32:     learn: 150483.6658493   test: 150483.6658493    test1: 196047.9345613   best: 196047.9345613 (32)       total: 300ms    remaining: 609ms
+33:     learn: 148229.8724341   test: 148229.8724341    test1: 194514.8600443   best: 194514.8600443 (33)       total: 308ms    remaining: 597ms
+34:     learn: 146027.7013355   test: 146027.7013355    test1: 192266.2622987   best: 192266.2622987 (34)       total: 314ms    remaining: 584ms
+35:     learn: 144245.4701191   test: 144245.4701191    test1: 191552.0168309   best: 191552.0168309 (35)       total: 322ms    remaining: 572ms
+36:     learn: 142413.2536117   test: 142413.2536117    test1: 190117.7821396   best: 190117.7821396 (36)       total: 331ms    remaining: 563ms
+37:     learn: 140688.3204281   test: 140688.3204281    test1: 188455.4328949   best: 188455.4328949 (37)       total: 340ms    remaining: 554ms
+38:     learn: 139066.2852420   test: 139066.2852420    test1: 187131.2301431   best: 187131.2301431 (38)       total: 346ms    remaining: 541ms
+39:     learn: 137603.2707736   test: 137603.2707736    test1: 185678.7582810   best: 185678.7582810 (39)       total: 353ms    remaining: 529ms
+40:     learn: 136068.0198434   test: 136068.0198434    test1: 184205.7321537   best: 184205.7321537 (40)       total: 362ms    remaining: 521ms
+41:     learn: 134378.2331538   test: 134378.2331538    test1: 183290.2839965   best: 183290.2839965 (41)       total: 371ms    remaining: 512ms
+42:     learn: 132782.4541325   test: 132782.4541325    test1: 182169.0617821   best: 182169.0617821 (42)       total: 378ms    remaining: 501ms
+43:     learn: 131790.3338328   test: 131790.3338328    test1: 181371.1566799   best: 181371.1566799 (43)       total: 386ms    remaining: 492ms
+44:     learn: 130880.2599549   test: 130880.2599549    test1: 180683.8795768   best: 180683.8795768 (44)       total: 393ms    remaining: 480ms
+45:     learn: 129808.2123748   test: 129808.2123748    test1: 180036.1907090   best: 180036.1907090 (45)       total: 399ms    remaining: 468ms
+46:     learn: 129303.5785381   test: 129303.5785381    test1: 179738.2600447   best: 179738.2600447 (46)       total: 407ms    remaining: 459ms
+47:     learn: 128048.3689670   test: 128048.3689670    test1: 178556.9712466   best: 178556.9712466 (47)       total: 415ms    remaining: 449ms
+48:     learn: 127037.1538879   test: 127037.1538879    test1: 178171.7057705   best: 178171.7057705 (48)       total: 421ms    remaining: 438ms
+49:     learn: 126176.0556530   test: 126176.0556530    test1: 177706.5702217   best: 177706.5702217 (49)       total: 427ms    remaining: 427ms
+50:     learn: 125570.3422714   test: 125570.3422714    test1: 177407.1423650   best: 177407.1423650 (50)       total: 439ms    remaining: 421ms
+51:     learn: 124650.7426271   test: 124650.7426271    test1: 176796.2265874   best: 176796.2265874 (51)       total: 450ms    remaining: 415ms
+52:     learn: 123882.3428112   test: 123882.3428112    test1: 176625.5441358   best: 176625.5441358 (52)       total: 457ms    remaining: 406ms
+53:     learn: 122924.4547779   test: 122924.4547779    test1: 175859.5014073   best: 175859.5014073 (53)       total: 466ms    remaining: 397ms
+54:     learn: 122129.0599356   test: 122129.0599356    test1: 175180.7398020   best: 175180.7398020 (54)       total: 473ms    remaining: 387ms
+55:     learn: 121511.6989019   test: 121511.6989019    test1: 174846.2723380   best: 174846.2723380 (55)       total: 481ms    remaining: 378ms
+56:     learn: 120589.4171994   test: 120589.4171994    test1: 174736.4785205   best: 174736.4785205 (56)       total: 488ms    remaining: 368ms
+57:     learn: 120008.4701474   test: 120008.4701474    test1: 174249.8404187   best: 174249.8404187 (57)       total: 497ms    remaining: 360ms
+58:     learn: 119430.6644494   test: 119430.6644494    test1: 174265.5090162   best: 174249.8404187 (57)       total: 504ms    remaining: 350ms
+59:     learn: 118630.3058181   test: 118630.3058181    test1: 173976.2184429   best: 173976.2184429 (59)       total: 512ms    remaining: 341ms
+60:     learn: 118182.1997115   test: 118182.1997115    test1: 173876.2073501   best: 173876.2073501 (60)       total: 519ms    remaining: 332ms
+61:     learn: 117570.8979635   test: 117570.8979635    test1: 173793.8082586   best: 173793.8082586 (61)       total: 526ms    remaining: 323ms
+62:     learn: 116938.2068202   test: 116938.2068202    test1: 173418.3256343   best: 173418.3256343 (62)       total: 534ms    remaining: 313ms
+63:     learn: 116403.4637366   test: 116403.4637366    test1: 173307.5139834   best: 173307.5139834 (63)       total: 541ms    remaining: 304ms
+64:     learn: 115943.1552822   test: 115943.1552822    test1: 172843.7260659   best: 172843.7260659 (64)       total: 548ms    remaining: 295ms
+65:     learn: 115501.0159642   test: 115501.0159642    test1: 172739.4278919   best: 172739.4278919 (65)       total: 554ms    remaining: 286ms
+66:     learn: 114896.8633806   test: 114896.8633806    test1: 172469.6259225   best: 172469.6259225 (66)       total: 561ms    remaining: 276ms
+67:     learn: 114371.1003208   test: 114371.1003208    test1: 172089.9094769   best: 172089.9094769 (67)       total: 567ms    remaining: 267ms
+68:     learn: 113769.1552686   test: 113769.1552686    test1: 171975.3847819   best: 171975.3847819 (68)       total: 573ms    remaining: 257ms
+69:     learn: 113367.6082125   test: 113367.6082125    test1: 171941.0547624   best: 171941.0547624 (69)       total: 579ms    remaining: 248ms
+70:     learn: 112807.8812827   test: 112807.8812827    test1: 171750.1811411   best: 171750.1811411 (70)       total: 587ms    remaining: 240ms
+71:     learn: 112486.8281573   test: 112486.8281573    test1: 171731.0786620   best: 171731.0786620 (71)       total: 594ms    remaining: 231ms
+72:     learn: 111984.3409624   test: 111984.3409624    test1: 171211.1273708   best: 171211.1273708 (72)       total: 600ms    remaining: 222ms
+73:     learn: 111271.7262892   test: 111271.7262892    test1: 171116.4885800   best: 171116.4885800 (73)       total: 607ms    remaining: 213ms
+74:     learn: 110412.4742720   test: 110412.4742720    test1: 170661.2066491   best: 170661.2066491 (74)       total: 613ms    remaining: 204ms
+75:     learn: 109833.7743343   test: 109833.7743343    test1: 170522.0560090   best: 170522.0560090 (75)       total: 621ms    remaining: 196ms
+76:     learn: 109327.5292193   test: 109327.5292193    test1: 170162.1461219   best: 170162.1461219 (76)       total: 629ms    remaining: 188ms
+77:     learn: 108938.8797941   test: 108938.8797941    test1: 170065.9735423   best: 170065.9735423 (77)       total: 637ms    remaining: 180ms
+78:     learn: 108377.0521836   test: 108377.0521836    test1: 169758.9858351   best: 169758.9858351 (78)       total: 643ms    remaining: 171ms
+79:     learn: 107920.0212175   test: 107920.0212175    test1: 169823.8961036   best: 169758.9858351 (78)       total: 649ms    remaining: 162ms
+80:     learn: 107605.6619060   test: 107605.6619060    test1: 169663.5161577   best: 169663.5161577 (80)       total: 657ms    remaining: 154ms
+81:     learn: 107217.1526180   test: 107217.1526180    test1: 169521.3574243   best: 169521.3574243 (81)       total: 665ms    remaining: 146ms
+82:     learn: 106703.3143505   test: 106703.3143505    test1: 169183.0635164   best: 169183.0635164 (82)       total: 672ms    remaining: 138ms
+83:     learn: 106394.4399996   test: 106394.4399996    test1: 168881.9310923   best: 168881.9310923 (83)       total: 678ms    remaining: 129ms
+84:     learn: 105989.4218876   test: 105989.4218876    test1: 168980.7043083   best: 168881.9310923 (83)       total: 686ms    remaining: 121ms
+85:     learn: 105583.7281376   test: 105583.7281376    test1: 168676.7258927   best: 168676.7258927 (85)       total: 692ms    remaining: 113ms
+86:     learn: 104871.9827146   test: 104871.9827146    test1: 168297.8732113   best: 168297.8732113 (86)       total: 698ms    remaining: 104ms
+87:     learn: 104424.8228558   test: 104424.8228558    test1: 168045.4120648   best: 168045.4120648 (87)       total: 705ms    remaining: 96.1ms
+88:     learn: 103889.3089230   test: 103889.3089230    test1: 167956.6055735   best: 167956.6055735 (88)       total: 711ms    remaining: 87.9ms
+89:     learn: 103616.4776767   test: 103616.4776767    test1: 167977.5844983   best: 167956.6055735 (88)       total: 719ms    remaining: 79.8ms
+90:     learn: 103253.3979466   test: 103253.3979466    test1: 167773.6376465   best: 167773.6376465 (90)       total: 725ms    remaining: 71.7ms
+91:     learn: 102986.4402999   test: 102986.4402999    test1: 167711.6607700   best: 167711.6607700 (91)       total: 733ms    remaining: 63.7ms
+92:     learn: 102701.8595845   test: 102701.8595845    test1: 167547.6694351   best: 167547.6694351 (92)       total: 740ms    remaining: 55.7ms
+93:     learn: 102343.2845205   test: 102343.2845205    test1: 167279.3629962   best: 167279.3629962 (93)       total: 748ms    remaining: 47.8ms
+94:     learn: 101981.3584052   test: 101981.3584052    test1: 167225.8302052   best: 167225.8302052 (94)       total: 755ms    remaining: 39.7ms
+95:     learn: 101336.8314230   test: 101336.8314230    test1: 166898.4084543   best: 166898.4084543 (95)       total: 763ms    remaining: 31.8ms
+96:     learn: 100996.5880829   test: 100996.5880829    test1: 166986.0832879   best: 166898.4084543 (95)       total: 771ms    remaining: 23.8ms
+97:     learn: 100782.5086486   test: 100782.5086486    test1: 166796.3737366   best: 166796.3737366 (97)       total: 778ms    remaining: 15.9ms
+98:     learn: 100484.1626654   test: 100484.1626654    test1: 166742.1681268   best: 166742.1681268 (98)       total: 785ms    remaining: 7.93ms
+99:     learn: 100220.7995788   test: 100220.7995788    test1: 166791.4282489   best: 166742.1681268 (98)       total: 793ms    remaining: 0us
+
+bestTest = 166742.1681
+bestIteration = 98
+
+Shrink model to first 99 iterations.
+Melhor modelo: &lt;catboost.core.CatBoostRegressor object at 0x0000021C7C5B27F0&gt;
+Melhor score: 0.9645632608480236
+Wall time: 3min 52s
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Gradient-Boosting">
+<h2>Gradient Boosting<a class="headerlink" href="#Gradient-Boosting" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%time</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;learning_rate&#39;</span><span class="p">:[</span><span class="mf">0.02</span><span class="p">],</span>
+             <span class="s2">&quot;n_estimators&quot;</span><span class="p">:[</span><span class="mi">3000</span><span class="p">],</span> <span class="s2">&quot;loss&quot;</span><span class="p">:[</span><span class="s2">&quot;ls&quot;</span><span class="p">],</span>
+              <span class="s2">&quot;criterion&quot;</span><span class="p">:[</span><span class="s2">&quot;friedman_mse&quot;</span><span class="p">]}</span>
+
+<span class="n">grb_model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span> <span class="n">parameters</span><span class="p">,</span>
+                    <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+                    <span class="n">refit</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">grb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">grb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor modelo: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grb_model</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melhor score: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grb_model</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Fitting 10 folds for each of 1 candidates, totalling 10 fits
+Melhor modelo: GradientBoostingRegressor(learning_rate=0.02, max_depth=4, n_estimators=3000)
+Melhor score: 0.973730974769129
+Wall time: 1min 43s
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Submetendo-a-predicao">
+<h2>Submetendo a predicao<a class="headerlink" href="#Submetendo-a-predicao" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test2</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="nb">int</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;Id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Id</span>
+<span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;selling_price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+
+<span class="n">prediction</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;catboost2.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">prediction</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Id</th>
+      <th>selling_price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>193067</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>556582</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>616575</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>1429865</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>554934</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>457523</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>652911</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>1964215</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>2390847</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>512478</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Inicio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../NBA%20Matches/Final_Games.html" class="btn btn-neutral float-right" title="NBA Matches" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Matheus de Castro Siniscarchio.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

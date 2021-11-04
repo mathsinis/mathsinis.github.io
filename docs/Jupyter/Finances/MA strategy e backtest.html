@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Backtest &amp; MA Strategy &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Modelo de regressão linear simples" href="../regressao_simples.html" />
+    <link rel="prev" title="Sepsis Detection" href="../Sepsis%20Detection/Final_Sepse.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Matheus Siniscarchio
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Aprendizado Máquina</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Car_Price/Car_Price.html">Car Price</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NBA%20Matches/Final_Games.html">NBA Matches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Sepsis%20Detection/Final_Sepse.html">Sepsis Detection</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Finanças Quantitativas</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Backtest &amp; MA Strategy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Bibliotecas">Bibliotecas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Importando-dados">Importando dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Moving-average-(MA)-cross-over-strategy">Moving average (MA) cross-over strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Backtest">Backtest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Trades-Long">Trades Long</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Trades-Short">Trades Short</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Bibliografia">Bibliografia</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Estudo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../regressao_simples.html">Modelo de regressão linear simples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Matheus Siniscarchio</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Backtest &amp; MA Strategy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/Jupyter/Finances/MA strategy e backtest.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Backtest-&amp;-MA-Strategy">
+<h1>Backtest &amp; MA Strategy<a class="headerlink" href="#Backtest-&-MA-Strategy" title="Permalink to this headline">¶</a></h1>
+<p>Implementação de um backtest simples com o teste de uma estratégia básica de cruzamento de média móvel</p>
+<div class="section" id="Bibliotecas">
+<h2>Bibliotecas<a class="headerlink" href="#Bibliotecas" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">Backtest</span> <span class="k">as</span> <span class="nn">bt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Importando-dados">
+<h2>Importando dados<a class="headerlink" href="#Importando-dados" title="Permalink to this headline">¶</a></h2>
+<p>Iremos Utilizar a biblioteca do yahoofinance para importar dados de ações</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#ticker = &quot;PETR4.SA&quot;</span>
+<span class="n">ticker</span> <span class="o">=</span> <span class="s1">&#39;ITUB4.SA&#39;</span>
+<span class="n">yfObj</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Ticker</span><span class="p">(</span><span class="n">ticker</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">yfObj</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;2009-12-30&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;2020-12-31&quot;</span><span class="p">)</span>
+<span class="n">name</span> <span class="o">=</span> <span class="n">yfObj</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;shortName&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#data.drop(columns = [&#39;Dividends&#39;, &#39;Stock Splits&#39;],inplace = True)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+      <th>Dividends</th>
+      <th>Stock Splits</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2009-12-30</th>
+      <td>11.019808</td>
+      <td>11.163295</td>
+      <td>10.971023</td>
+      <td>11.103031</td>
+      <td>8940087</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2010-01-04</th>
+      <td>11.160425</td>
+      <td>11.619584</td>
+      <td>11.160425</td>
+      <td>11.513404</td>
+      <td>11843397</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2010-01-05</th>
+      <td>11.542102</td>
+      <td>11.588018</td>
+      <td>11.450270</td>
+      <td>11.588018</td>
+      <td>8593315</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2010-01-06</th>
+      <td>11.550710</td>
+      <td>11.619585</td>
+      <td>11.392875</td>
+      <td>11.487576</td>
+      <td>10602572</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2010-01-07</th>
+      <td>11.407227</td>
+      <td>11.493320</td>
+      <td>11.349832</td>
+      <td>11.369922</td>
+      <td>9966567</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Close Price history&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Close</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Close price USD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Finances_MA_strategy_e_backtest_8_0.png" src="../../_images/Jupyter_Finances_MA_strategy_e_backtest_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Moving-average-(MA)-cross-over-strategy">
+<h2>Moving average (MA) cross-over strategy<a class="headerlink" href="#Moving-average-(MA)-cross-over-strategy" title="Permalink to this headline">¶</a></h2>
+<p>Essa estrategia consiste em traçar duas medias moveis, uma curta e outra longa, quando o MA de curto prazo cruza acima do MA de longo prazo, é um sinal de compra, pois indica que a tendência está subindo, quando o MM de curto prazo cruza abaixo do MM de longo prazo, é um sinal de venda, pois indica que a tendência está mudando para baixo.</p>
+<p>Implementei de forma que após o sinal de compra ou sinal de venda, esse sinal fosse mantido até a proxima mudança.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">SMA</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retorna media movel n de values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">cross_over</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sma1</span><span class="p">,</span> <span class="n">sma2</span><span class="p">):</span>
+    <span class="n">sinal</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n2</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+            <span class="n">sinal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">sma1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">sma2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">and</span> <span class="n">sma1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">sma2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">sinal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">sma1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">sma2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">and</span> <span class="n">sma1</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">sma2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">sinal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sinal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sinal</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">sinal</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#media movel curta</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1">#media movel longa</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">sma1</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Close</span><span class="p">,</span> <span class="n">n1</span><span class="p">)</span>
+<span class="n">sma2</span> <span class="o">=</span> <span class="n">SMA</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Close</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;sma_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">sma1</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;sma_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">sma2</span>
+<span class="n">data</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;cross_over&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cross_over</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sma1</span><span class="p">,</span> <span class="n">sma2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;cross_over&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 1    1498
+-1    1192
+ 0      36
+Name: cross_over, dtype: int64
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Backtest">
+<h2>Backtest<a class="headerlink" href="#Backtest" title="Permalink to this headline">¶</a></h2>
+<p>A implementação do backtest é de minha autoria, entretanto, utilizei e me basei no formato e na logica do curso Quant Expert do Rafael Lavrado (mais informações na bibliografia)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bt2</span> <span class="o">=</span> <span class="n">bt</span><span class="o">.</span><span class="n">backtest</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">Close</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">cross_over</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Trades-Long">
+<h3>Trades Long<a class="headerlink" href="#Trades-Long" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">b</span> <span class="o">=</span> <span class="n">bt2</span><span class="o">.</span><span class="n">trade_long</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+       trade    entrada      saida    ndias  perfomance
+0    Trade 1 2010-02-25 2010-04-29  63 days    0.061798
+1    Trade 2 2010-06-22 2010-07-06  14 days   -0.028537
+2    Trade 3 2010-07-13 2010-08-24  42 days   -0.013855
+3    Trade 4 2010-09-14 2010-11-22  69 days    0.057727
+4    Trade 5 2011-01-06 2011-01-26  20 days   -0.067861
+5    Trade 6 2011-02-25 2011-05-02  66 days    0.031888
+6    Trade 7 2011-06-29 2011-07-14  15 days   -0.125881
+7    Trade 8 2011-09-08 2011-10-06  28 days   -0.010377
+8    Trade 9 2011-10-07 2011-11-22  46 days    0.032804
+9   Trade 10 2011-12-08 2012-04-02 116 days    0.065476
+10  Trade 11 2012-06-13 2012-07-02  19 days   -0.039085
+11  Trade 12 2012-07-17 2012-09-05  50 days    0.100457
+12  Trade 13 2012-09-20 2012-10-01  11 days   -0.071294
+13  Trade 14 2012-11-09 2013-02-06  89 days    0.134112
+14  Trade 15 2013-03-01 2013-04-05  35 days   -0.028186
+15  Trade 16 2013-05-15 2013-06-13  29 days   -0.058766
+16  Trade 17 2013-07-25 2013-08-29  35 days   -0.009593
+17  Trade 18 2013-09-11 2013-11-21  71 days    0.062781
+18  Trade 19 2014-01-08 2014-01-14   6 days   -0.016373
+19  Trade 20 2014-02-12 2014-03-17  33 days   -0.034027
+20  Trade 21 2014-03-27 2014-05-29  63 days    0.071486
+21  Trade 22 2014-06-20 2014-07-02  12 days   -0.059433
+22  Trade 23 2014-07-21 2014-09-23  64 days    0.056392
+23  Trade 24 2014-11-10 2014-12-12  32 days   -0.063438
+24  Trade 25 2015-02-11 2015-03-17  34 days    0.039854
+25  Trade 26 2015-04-06 2015-05-25  49 days   -0.049764
+26  Trade 27 2015-07-02 2015-07-24  22 days   -0.089013
+27  Trade 28 2015-09-17 2015-10-02  15 days   -0.034638
+28  Trade 29 2015-10-08 2015-10-26  18 days   -0.102520
+29  Trade 30 2015-11-13 2015-12-23  40 days   -0.033450
+30  Trade 31 2016-02-15 2016-04-13  58 days    0.427206
+31  Trade 32 2016-04-19 2016-05-09  20 days   -0.069222
+32  Trade 33 2016-07-05 2016-09-20  77 days    0.165217
+33  Trade 34 2016-10-04 2016-11-22  49 days    0.074321
+34  Trade 35 2017-01-06 2017-03-20  73 days    0.102911
+35  Trade 36 2017-05-02 2017-05-23  21 days   -0.115356
+36  Trade 37 2017-06-28 2017-10-31 125 days    0.176738
+37  Trade 38 2017-11-30 2017-12-06   6 days    0.018786
+38  Trade 39 2018-01-02 2018-03-26  83 days    0.206309
+39  Trade 40 2018-04-25 2018-05-04   9 days   -0.064171
+40  Trade 41 2018-07-12 2018-08-20  39 days    0.000254
+41  Trade 42 2018-09-24 2018-12-27  94 days    0.205156
+42  Trade 43 2019-01-07 2019-02-18  42 days   -0.003663
+43  Trade 44 2019-03-21 2019-03-26   5 days   -0.017934
+44  Trade 45 2019-05-30 2019-08-02  64 days   -0.003007
+45  Trade 46 2019-09-13 2019-10-07  24 days   -0.084358
+46  Trade 47 2019-10-24 2019-11-26  33 days   -0.055955
+47  Trade 48 2019-12-16 2020-01-16  31 days   -0.021589
+48  Trade 49 2020-02-20 2020-03-02  11 days   -0.048389
+49  Trade 50 2020-04-24 2020-04-27   3 days    0.033046
+50  Trade 51 2020-05-28 2020-08-11  75 days    0.096351
+51  Trade 52 2020-10-20 2020-12-30  71 days    0.306347
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bt2</span><span class="o">.</span><span class="n">long_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Perf Long
+
+N Trades:52
+Win:23
+Acerto:44.23%
+Avg Win:10.99%
+Erro:-22%
+Avg Loss:-4.9%
+Avg Total:2.13%
+Avg Holding:42 days 16:09:13.846153846
+Avg Holding Win:64 days 12:31:18.260869565
+Avg Holding Loss:25 days 08:16:33.103448275
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Trades-Short">
+<h3>Trades Short<a class="headerlink" href="#Trades-Short" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">s</span> <span class="o">=</span> <span class="n">bt2</span><span class="o">.</span><span class="n">trade_short</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+       trade    entrada      saida   ndias  performance
+0    Trade 1 2010-04-29 2010-06-22 54 days    -0.065517
+1    Trade 2 2010-07-06 2010-07-13  7 days     0.089556
+2    Trade 3 2010-08-24 2010-09-14 21 days     0.066696
+3    Trade 4 2010-11-22 2011-01-06 45 days    -0.034217
+4    Trade 5 2011-01-26 2011-02-25 30 days    -0.016989
+5    Trade 6 2011-05-02 2011-06-29 58 days    -0.004317
+6    Trade 7 2011-07-14 2011-09-08 56 days    -0.056593
+7    Trade 8 2011-10-06 2011-10-07  1 days    -0.012265
+8    Trade 9 2011-11-22 2011-12-08 16 days     0.130729
+9   Trade 10 2012-04-02 2012-06-13 72 days    -0.162042
+10  Trade 11 2012-07-02 2012-07-17 15 days     0.018323
+11  Trade 12 2012-09-05 2012-09-20 15 days     0.061905
+12  Trade 13 2012-10-01 2012-11-09 39 days    -0.039128
+13  Trade 14 2013-02-06 2013-03-01 23 days     0.051824
+14  Trade 15 2013-04-05 2013-05-15 40 days     0.038310
+15  Trade 16 2013-06-13 2013-07-25 42 days    -0.033474
+16  Trade 17 2013-08-29 2013-09-11 13 days     0.087442
+17  Trade 18 2013-11-21 2014-01-08 48 days    -0.024773
+18  Trade 19 2014-01-14 2014-02-12 29 days     0.008823
+19  Trade 20 2014-03-17 2014-03-27 10 days     0.118395
+20  Trade 21 2014-05-29 2014-06-20 22 days     0.031925
+21  Trade 22 2014-07-02 2014-07-21 19 days     0.122941
+22  Trade 23 2014-09-23 2014-11-10 48 days    -0.026424
+23  Trade 24 2014-12-12 2015-02-11 61 days     0.017498
+24  Trade 25 2015-03-17 2015-04-06 20 days     0.072294
+25  Trade 26 2015-05-25 2015-07-02 38 days    -0.015227
+26  Trade 27 2015-07-24 2015-09-17 55 days     0.017949
+27  Trade 28 2015-10-02 2015-10-08  6 days     0.063639
+28  Trade 29 2015-10-26 2015-11-13 18 days     0.035418
+29  Trade 30 2015-12-23 2016-02-15 54 days    -0.082322
+30  Trade 31 2016-04-13 2016-04-19  6 days    -0.024622
+31  Trade 32 2016-05-09 2016-07-05 57 days     0.003630
+32  Trade 33 2016-09-20 2016-10-04 14 days     0.038955
+33  Trade 34 2016-11-22 2017-01-06 45 days     0.012971
+34  Trade 35 2017-03-20 2017-05-02 43 days     0.038372
+35  Trade 36 2017-05-23 2017-06-28 36 days     0.020752
+36  Trade 37 2017-10-31 2017-11-30 30 days    -0.018199
+37  Trade 38 2017-12-06 2018-01-02 27 days     0.048070
+38  Trade 39 2018-03-26 2018-04-25 30 days    -0.006602
+39  Trade 40 2018-05-04 2018-07-12 69 days    -0.084546
+40  Trade 41 2018-08-20 2018-09-24 35 days     0.005530
+41  Trade 42 2018-12-27 2019-01-07 11 days     0.080965
+42  Trade 43 2019-02-18 2019-03-21 31 days    -0.036056
+43  Trade 44 2019-03-26 2019-05-30 65 days     0.034192
+44  Trade 45 2019-08-02 2019-09-13 42 days     0.043694
+45  Trade 46 2019-10-07 2019-10-24 17 days     0.113616
+46  Trade 47 2019-11-26 2019-12-16 20 days     0.029937
+47  Trade 48 2020-01-16 2020-02-20 35 days    -0.019725
+48  Trade 49 2020-03-02 2020-04-24 53 days    -0.344618
+49  Trade 50 2020-04-27 2020-05-28 31 days     0.081380
+50  Trade 51 2020-08-11 2020-10-19 69 days    -0.081072
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bt2</span><span class="o">.</span><span class="n">short_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Perf Short
+
+N Trades:51
+Win:30
+Acerto:58.82%
+Avg Win:5.29%
+Erro:-29%
+Avg Loss:-5.66%
+Avg Total:0.78%
+Avg Holding:34 days 03:17:38.823529412
+Avg Holding Win:27 days 18:24:00
+Avg Holding Loss:43 days 05:42:51.428571428
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bt2</span><span class="o">.</span><span class="n">patrimonio</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Patrimonio final:24878
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/Jupyter_Finances_MA_strategy_e_backtest_23_1.png" src="../../_images/Jupyter_Finances_MA_strategy_e_backtest_23_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Bibliografia">
+<h2>Bibliografia<a class="headerlink" href="#Bibliografia" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.udemy.com/course/quant-expert/">https://www.udemy.com/course/quant-expert/</a> <a class="reference external" href="https://www.investopedia.com/articles/active-trading/052014/how-use-moving-average-buy-stocks.asp#:~:text=Trading%20Strategies%E2%80%94Crossovers,-Crossovers%20are%20one&amp;text=Another%20strategy%20is%20to%20apply,as%20a%20%22golden%20cross.%22">https://www.investopedia.com/articles/active-trading/052014/how-use-moving-average-buy-stocks.asp#:~:text=Trading%20Strategies%E2%80%94Crossovers,-Crossovers%20are%20one&amp;text=Another%20strategy%20is%20to%20apply,as%20a%20%22golden%20cross.%22</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Sepsis%20Detection/Final_Sepse.html" class="btn btn-neutral float-left" title="Sepsis Detection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../regressao_simples.html" class="btn btn-neutral float-right" title="Modelo de regressão linear simples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Matheus de Castro Siniscarchio.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

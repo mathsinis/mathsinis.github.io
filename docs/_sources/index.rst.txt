@@ -12,18 +12,24 @@ Sobre Mim:
 Estudante de Estatística e Ciência de Dados (bacharelado), minhas áreas de interesse são:
 
 * Aprendizado de máquina
-* Aprendizado profundo
 * Redes Complexas
+* Finanças quantitativas
 
 Contato: m.siniscarchio@gmail.com
 
 .. toctree::
    :maxdepth: 2
-   :caption: Projetos
+   :caption: Aprendizado Máquina
 
    Jupyter/Car_Price/Car_Price.ipynb
    Jupyter/NBA Matches/Final_Games.ipynb
    Jupyter/Sepsis Detection/Final_Sepse.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Finanças Quantitativas
+
+   Jupyter/Finances/MA strategy e backtest.ipynb
 
 .. toctree::
    :maxdepth: 2

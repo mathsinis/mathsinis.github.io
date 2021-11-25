@@ -28,8 +28,8 @@ Contato: m.siniscarchio@gmail.com
 .. toctree::
    :maxdepth: 2
    :caption: Finanças Quantitativas
-
-   Jupyter/Finances/MA strategy e backtest.ipynb
+   
+   Jupyter/Finances/Aprendizado de maquina em dados financeiros.ipynb
 
 .. toctree::
    :maxdepth: 2

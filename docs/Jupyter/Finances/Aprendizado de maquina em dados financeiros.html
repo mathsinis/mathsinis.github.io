@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aprendizado de Maquina em Dados Financeiros &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <title>Desafio Quantamental Itaú 2021 &mdash; Matheus Siniscarchio 1 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
@@ -46,7 +46,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Finanças Quantitativas</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Aprendizado de Maquina em Dados Financeiros</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Desafio Quantamental Itaú 2021</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Objetivo-do-desafio">Objetivo do desafio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Abordagem-Utilizando-Aprendizado-de-maquina">Abordagem Utilizando Aprendizado de maquina</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#De-onde-a-ideia-foi-tirada?">De onde a ideia foi tirada?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Dados">Dados</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Barras-de-tempo">Barras de tempo</a></li>
@@ -72,6 +74,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#Benchmark">Benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Conclusão">Conclusão</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Bibliografia">Bibliografia</a></li>
 </ul>
 </li>
 </ul>
@@ -94,7 +97,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Aprendizado de Maquina em Dados Financeiros</li>
+      <li>Desafio Quantamental Itaú 2021</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/Jupyter/Finances/Aprendizado de maquina em dados financeiros.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -374,12 +377,20 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="Aprendizado-de-Maquina-em-Dados-Financeiros">
-<h1>Aprendizado de Maquina em Dados Financeiros<a class="headerlink" href="#Aprendizado-de-Maquina-em-Dados-Financeiros" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Desafio-Quantamental-Itaú-2021">
+<h1>Desafio Quantamental Itaú 2021<a class="headerlink" href="#Desafio-Quantamental-Itaú-2021" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Objetivo-do-desafio">
+<h2>Objetivo do desafio<a class="headerlink" href="#Objetivo-do-desafio" title="Permalink to this headline">¶</a></h2>
+<p>A forma mais fácil de entender o objetivo do desafio é se colocar na posição de um analista quantitativo de um fundo de investimento. Seu objetivo é criar e apresentar uma estratégia quantitativa de investimento e, assim, convencer o gestor do fundo a colocá-la no portfólio ou, pelo menos, considerar a possibilidade de saber mais sobre sua proposta, aprofundando seu entendimento. Portanto, sugerimos utilizar uma linguagem mais prática e direta, evitando uma comunicação acadêmica. <strong>O objetivo é
+apresentar a sua ideia para o gestor do fundo e não escrever um artigo acadêmico.</strong></p>
+</div>
+<div class="section" id="Abordagem-Utilizando-Aprendizado-de-maquina">
+<h2>Abordagem Utilizando Aprendizado de maquina<a class="headerlink" href="#Abordagem-Utilizando-Aprendizado-de-maquina" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line"><span class="math notranslate nohighlight">\(\quad\)</span>Técnicas de aprendizado de máquina ganharam notoriedade por conseguirem resultados promissores em diversas áreas. Isso se deve pelo volume de dados e pelo aumento do processamento dos computadores.</div>
 <div class="line"><span class="math notranslate nohighlight">\(\quad\)</span>O mercado financeiro não foi uma exceção, também adotou essas técnicas. Com o crescimento de fundos quantitativos, cada vez mais empresas empregam o uso de aprendizado de máquina para identificação de tendências do mercado e gerenciamento de portfólio.</div>
 <div class="line"><span class="math notranslate nohighlight">\(\quad\)</span>O objetivo da ideia de investimento apresentada neste trabalho é uma tentativa de empregar o uso do aprendizado supervisionado na identificação de tendências de mercado de uma ação. Para tal, os valores de fechamento de ações diários foram discretizados e transformados em um problema de classificação.</div>
+</div>
 </div>
 <div class="section" id="De-onde-a-ideia-foi-tirada?">
 <h2>De onde a ideia foi tirada?<a class="headerlink" href="#De-onde-a-ideia-foi-tirada?" title="Permalink to this headline">¶</a></h2>
@@ -533,7 +544,7 @@ possível conclusões com uma precisão muito maior. Contudo, acabamos por utili
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_8_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_8_0.png" />
+<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_10_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_10_0.png" />
 </div>
 </div>
 </div>
@@ -1453,7 +1464,7 @@ inferior; compra quando atingir a barreira superior, e saímos da posição atua
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_25_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_25_0.png" />
+<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_27_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_27_0.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(\quad\)</span>O método de barreira tripla rotulou a maioria dos dados como compra (1), seguido de venda (-1) e saída da posição (0), como não ocorreu um grande desbalanceamento, não vamos optar por técnicas de validação estratificadas.</p>
@@ -1478,7 +1489,7 @@ inferior; compra quando atingir a barreira superior, e saímos da posição atua
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_28_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_28_0.png" />
+<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_30_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_30_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1808,7 +1819,7 @@ dados tem cerca de 2726 dias, o que torna esse processo computacionalmente caro,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_43_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_43_0.png" />
+<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_45_0.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_45_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -2152,7 +2163,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_58_1.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_58_1.png" />
+<img alt="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_60_1.png" src="../../_images/Jupyter_Finances_Aprendizado_de_maquina_em_dados_financeiros_60_1.png" />
 </div>
 </div>
 <p>Pela analise visual do desempenho da estratégia, verifica-se que no geral, ela não conseguiu ultrapassar a IBOV e retornou em prejuízo ao final do período. O único período que parece dar bons retornos ocorreu por volta de 2014</p>
@@ -2161,6 +2172,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <h2>Conclusão<a class="headerlink" href="#Conclusão" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(\quad\)</span>A estratégia de investimento apresentada não obteve um resultado satisfatório. Diversos motivos podem ter contribuído para esse desempenho: base de dados pobre e com quantidade de dados insatisfatória, indicadores insuficientes e até mesmo os modelos selecionados podem não ter sido os melhores para esse tipo de problema. Diferentes tipos de abordagem dentro desse trabalho podem acabar gerando resultados melhores, desde a busca de uma base de dados mais próxima da realidade até
 modelos de complexidade maior (aprendizado profundo).</p>
+</div>
+<div class="section" id="Bibliografia">
+<h2>Bibliografia<a class="headerlink" href="#Bibliografia" title="Permalink to this headline">¶</a></h2>
+<p>De Prado, M. L. (2018). Advances in financial machine learning. John Wiley &amp; Sons.</p>
+<p>Gui, K. (30 de Agosto de 2020). Data Labelling: The Triple-barrier Method. Fonte: Towards Data Science: <a class="reference external" href="https://towardsdatascience.com/the-triple-barrier-method-251268419dcd">https://towardsdatascience.com/the-triple-barrier-method-251268419dcd</a></p>
+<p>Quant Expert: Estratégias Quantitativas. Rafael Lavrado: <a class="reference external" href="https://www.udemy.com/course/quant-expert/">https://www.udemy.com/course/quant-expert/</a></p>
 </div>
 </div>
 
